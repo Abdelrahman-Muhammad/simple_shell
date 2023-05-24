@@ -1,5 +1,5 @@
 #include "shell.h"
-#include <stdlib.h> // Included for EXIT_SUCCESS and EXIT_FAILURE
+#include <stdlib.h>
 
 #define MAX 100
 
