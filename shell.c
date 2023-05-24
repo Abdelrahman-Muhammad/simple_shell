@@ -1,6 +1,5 @@
 #include "shell.h"
 #include <stdlib.h>
-#include <string.h>
 
 #define MAX 100
 
@@ -27,23 +26,15 @@ void execute_command(char *command, const char *program_name)
 {
     pid_t pid;
 
-    char **args = malloc(3 * sizeof(char *));
+    char **args = malloc(2 * sizeof(char *));
     if (args == NULL)
     {
         perror("malloc");
         exit(EXIT_FAILURE);
     }
 
-    char *token;
-    int i = 0;
-    token = strtok(command, " ");
-    while (token != NULL)
-    {
-        args[i] = token;
-        token = strtok(NULL, " ");
-        i++;
-    }
-    args[i] = NULL;
+    args[0] = command;
+    args[1] = NULL;
 
     if ((pid = fork()) == -1)
     {
@@ -53,7 +44,7 @@ void execute_command(char *command, const char *program_name)
     }
     else if (pid == 0)
     {
-        execve(args[0], args, NULL);
+        execve(command, args, NULL);
         perror(program_name);
         free(args);
         exit(EXIT_FAILURE);
@@ -89,11 +80,24 @@ int main(int argc, char *argv[])
 {
     char *user_input = NULL;
     size_t input_size = 0;
-    int interactive_mode = 0;
 
     if (argc == 1)
     {
-        interactive_mode = 1;
+        while (1)
+        {
+            if (user_input != NULL)
+                printf("#cisfun$ ");
+
+            if (getline(&user_input, &input_size, stdin) == -1)
+            {
+                printf("\n");
+                free(user_input);
+                exit(EXIT_SUCCESS);
+            }
+            user_input[strcspn(user_input, "\n")] = '\0';
+
+            execute_command(user_input, argv[0]);
+        }
     }
     else if (argc == 2)
     {
@@ -112,28 +116,11 @@ int main(int argc, char *argv[])
 
         fclose(file);
         free(user_input);
-        return 0;
     }
     else
     {
         fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
         exit(EXIT_FAILURE);
-    }
-
-    while (1)
-    {
-        if (interactive_mode)
-            printf("#cisfun$ ");
-
-        if (getline(&user_input, &input_size, stdin) == -1)
-        {
-            printf("\n");
-            free(user_input);
-            exit(EXIT_SUCCESS);
-        }
-        user_input[strcspn(user_input, "\n")] = '\0';
-
-        execute_command(user_input, argv[0]);
     }
 
     return 0;
