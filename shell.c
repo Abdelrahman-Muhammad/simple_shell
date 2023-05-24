@@ -67,7 +67,7 @@ void execute_command(const char *command, const char *program_name)
  *
  * Return: Always 0.
  */
-int main(int argc, char *argv[])
+int main(void)
 {
     char user_input[MAX];
 
