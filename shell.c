@@ -17,8 +17,8 @@ void read_user_input(char *user_input)
     user_input[strcspn(user_input, "\n")] = '\0';
 }
 
-/**
- * execute_command - Executes the given command
+/**  
+ * execute_command - Executes the given command  
  * @command: Command to execute
  * @program_name: Name of the program
  */
@@ -78,20 +78,48 @@ void execute_command(char *command, const char *program_name)
  */
 int main(int argc, char *argv[])
 {
-    char *user_input = malloc(MAX);
-    if (user_input == NULL)
+    char *user_input = NULL;
+    size_t input_size = 0;
+
+    if (argc == 1)
     {
-        perror("malloc");
+        while (1)
+        {
+            printf("#cisfun$ ");
+            if (getline(&user_input, &input_size, stdin) == -1)
+            {
+                printf("\n");
+                free(user_input);
+                exit(0);
+            }
+            user_input[strcspn(user_input, "\n")] = '\0';
+
+            execute_command(user_input, argv[0]);
+        }
+    }
+    else if (argc == 2)
+    {
+        FILE *file = fopen(argv[1], "r");
+        if (file == NULL)
+        {
+            perror("fopen");
+            exit(1);
+        }
+
+        while (getline(&user_input, &input_size, file) != -1)
+        {
+            user_input[strcspn(user_input, "\n")] = '\0';
+            execute_command(user_input, argv[0]);
+        }
+
+        fclose(file);
+        free(user_input);
+    }
+    else
+    {
+        fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
         exit(1);
     }
 
-    (void)argc;
-    while (1)
-    {
-        read_user_input(user_input);
-        execute_command(user_input, argv[0]);
-    }
-
-    free(user_input);
     return 0;
 }
