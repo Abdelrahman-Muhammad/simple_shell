@@ -9,7 +9,6 @@
  */
 void read_user_input(char *user_input)
 {
-    printf("#cisfun$ ");
     if (fgets(user_input, MAX, stdin) == NULL)
     {
         printf("\n");
