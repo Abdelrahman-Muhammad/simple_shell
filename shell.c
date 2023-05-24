@@ -24,6 +24,8 @@ void read_user_input(char *user_input)
  */
 void execute_command(char *command, const char *program_name)
 {
+    pid_t pid;
+
     char **args = malloc(2 * sizeof(char *));
     if (args == NULL)
     {
@@ -34,7 +36,6 @@ void execute_command(char *command, const char *program_name)
     args[0] = command;
     args[1] = NULL;
 
-    pid_t pid;
     if ((pid = fork()) == -1)
     {
         perror("fork");
@@ -77,8 +78,7 @@ void execute_command(char *command, const char *program_name)
  */
 int main(int argc, char *argv[])
 {
-    char *user_input;
-    user_input = malloc(MAX);
+    char *user_input = malloc(MAX);
     if (user_input == NULL)
     {
         perror("malloc");
