@@ -58,7 +58,6 @@ void execute_command(char user_input[MAX])
 		}
 		else
 		{
-			printf("%s: command Not Found\n", user_input);
 			return;
 		}
 	}
