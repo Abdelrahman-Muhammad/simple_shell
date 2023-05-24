@@ -85,7 +85,9 @@ int main(int argc, char *argv[])
     {
         while (1)
         {
-            printf("#cisfun$ ");
+            if (user_input != NULL)
+                printf("#cisfun$ ");
+
             if (getline(&user_input, &input_size, stdin) == -1)
             {
                 printf("\n");
