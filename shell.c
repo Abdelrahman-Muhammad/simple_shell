@@ -1,5 +1,6 @@
 #include "shell.h"
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX 100
 
@@ -26,15 +27,23 @@ void execute_command(char *command, const char *program_name)
 {
     pid_t pid;
 
-    char **args = malloc(2 * sizeof(char *));
+    char **args = malloc(3 * sizeof(char *));
     if (args == NULL)
     {
         perror("malloc");
         exit(EXIT_FAILURE);
     }
 
-    args[0] = command;
-    args[1] = NULL;
+    char *token;
+    int i = 0;
+    token = strtok(command, " ");
+    while (token != NULL)
+    {
+        args[i] = token;
+        token = strtok(NULL, " ");
+        i++;
+    }
+    args[i] = NULL;
 
     if ((pid = fork()) == -1)
     {
@@ -44,7 +53,7 @@ void execute_command(char *command, const char *program_name)
     }
     else if (pid == 0)
     {
-        execve(command, args, NULL);
+        execve(args[0], args, NULL);
         perror(program_name);
         free(args);
         exit(EXIT_FAILURE);
