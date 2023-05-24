@@ -79,51 +79,55 @@ void execute_command(char *command, const char *program_name)
  */
 int main(int argc, char *argv[])
 {
-    char *user_input = NULL;
-    size_t input_size = 0;
+  char *user_input = NULL;
+  size_t input_size = 0;
 
-    if (argc == 1)
+  if (argc == 1)
+  {
+    while (1)
     {
-        while (1)
+      if (user_input != NULL)
+        printf("#cisfun$ ");
+
+      if (getline(&user_input, &input_size, stdin) == -1)
+      {
+        if (feof(stdin))
+          break;
+        else
         {
-            if (user_input != NULL)
-                printf("#cisfun$ ");
-
-            if (getline(&user_input, &input_size, stdin) == -1)
-            {
-                printf("\n");
-                exit(EXIT_SUCCESS);
-            }
-            user_input[strcspn(user_input, "\n")] = '\0';
-
-            execute_command(user_input, argv[0]);
-            free(user_input);     
-
+          perror("getline");
+          exit(EXIT_FAILURE);
         }
+      }
+
+      user_input[strcspn(user_input, "\n")] = '\0';
+
+      execute_command(user_input, argv[0]);
     }
-    else if (argc == 2)
+  }
+  else if (argc == 2)
+  {
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
     {
-        FILE *file = fopen(argv[1], "r");
-        if (file == NULL)
-        {
-            perror("fopen");
-            exit(EXIT_FAILURE);
-        }
-
-        while (!feof(file) && getline(&user_input, &input_size, file) != -1)
-        {
-            user_input[strcspn(user_input, "\n")] = '\0';
-            execute_command(user_input, argv[0]);
-        }
-
-        fclose(file);
-        free(user_input);
-    }
-    else
-    {
-        fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
-        exit(EXIT_FAILURE);
+      perror("fopen");
+      exit(EXIT_FAILURE);
     }
 
-    return 0;
+    while (!feof(file) && getline(&user_input, &input_size, file) != -1)
+    {
+      user_input[strcspn(user_input, "\n")] = '\0';
+      execute_command(user_input, argv[0]);
+    }
+
+    fclose(file);
+    free(user_input);
+  }
+  else
+  {
+    fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
+
+  return 0;
 }
