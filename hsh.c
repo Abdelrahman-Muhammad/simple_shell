@@ -80,22 +80,11 @@ int main(int argc, char *argv[])
 {
     char *user_input = NULL;
     size_t input_size = 0;
+    int interactive_mode = 0;
 
     if (argc == 1)
     {
-        while (1)
-        {
-            printf("#cisfun$ ");
-            if (getline(&user_input, &input_size, stdin) == -1)
-            {
-                printf("\n");
-                free(user_input);
-                exit(EXIT_SUCCESS);
-            }
-            user_input[strcspn(user_input, "\n")] = '\0';
-
-            execute_command(user_input, argv[0]);
-        }
+        interactive_mode = 1;
     }
     else if (argc == 2)
     {
@@ -114,11 +103,28 @@ int main(int argc, char *argv[])
 
         fclose(file);
         free(user_input);
+        return 0;
     }
     else
     {
         fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
         exit(EXIT_FAILURE);
+    }
+
+    while (1)
+    {
+        if (interactive_mode)
+            printf("#cisfun$ ");
+
+        if (getline(&user_input, &input_size, stdin) == -1)
+        {
+            printf("\n");
+            free(user_input);
+            exit(EXIT_SUCCESS);
+        }
+        user_input[strcspn(user_input, "\n")] = '\0';
+
+        execute_command(user_input, argv[0]);
     }
 
     return 0;
