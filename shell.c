@@ -17,8 +17,8 @@ void read_user_input(char *user_input)
     user_input[strcspn(user_input, "\n")] = '\0';
 }
 
-/**  
- * execute_command - Executes the given command  
+/**
+ * execute_command - Executes the given command
  * @command: Command to execute
  * @program_name: Name of the program
  */
@@ -44,7 +44,7 @@ void execute_command(char *command, const char *program_name)
     }
     else if (pid == 0)
     {
-        execvp(command, args);
+        execve(command, args, NULL);
         perror(program_name);
         free(args);
         exit(1);
