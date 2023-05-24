@@ -92,7 +92,6 @@ int main(int argc, char *argv[])
             if (getline(&user_input, &input_size, stdin) == -1)
             {
                 printf("\n");
-                free(user_input);
                 exit(EXIT_SUCCESS);
             }
             user_input[strcspn(user_input, "\n")] = '\0';
