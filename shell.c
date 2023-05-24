@@ -77,14 +77,15 @@ void execute_command(char *command, const char *program_name)
  */
 int main(int argc, char *argv[])
 {
-    (void)argc;
-    char *user_input = malloc(MAX);
+    char *user_input;
+    user_input = malloc(MAX);
     if (user_input == NULL)
     {
         perror("malloc");
         exit(1);
     }
 
+    (void)argc;
     while (1)
     {
         read_user_input(user_input);
