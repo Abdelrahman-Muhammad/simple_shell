@@ -98,6 +98,8 @@ int main(int argc, char *argv[])
             user_input[strcspn(user_input, "\n")] = '\0';
 
             execute_command(user_input, argv[0]);
+            free(user_input);     
+
         }
     }
     else if (argc == 2)
