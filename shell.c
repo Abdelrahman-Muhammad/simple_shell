@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        while (getline(&user_input, &input_size, file) != -1)
+        while (!feof(file) && getline(&user_input, &input_size, file) != -1)
         {
             user_input[strcspn(user_input, "\n")] = '\0';
             execute_command(user_input, argv[0]);
