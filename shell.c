@@ -2,7 +2,11 @@
 
 
 #define MAX 100
-
+/**
+ * read_user_input - check the code
+ * @user_input: user_input
+ * void: Always 0.
+ */
 void read_user_input(char user_input[MAX])
 {
 	printf("#cisfun$");
@@ -13,7 +17,11 @@ void read_user_input(char user_input[MAX])
 	}
 	user_input[strcspn(user_input, "\n")] = '\0';
 }
-
+/**
+ * execute_command - check the code
+ * @user_input: user_input
+ * Return: Always void.
+ */
 void execute_command(char user_input[MAX])
 {
 	pid_t pid = fork();
@@ -52,7 +60,11 @@ void execute_command(char user_input[MAX])
 		}
 	}
 }
-
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
 int main(void)
 
 {
