@@ -13,7 +13,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("~alxshell$ ");
+		printf("#alxshell$ ");
 
 		if (fgets(user_input, MAX, stdin) == NULL)
 		{
