@@ -34,9 +34,12 @@ void execute_command(char user_input[MAX])
 	}
 	else if (pid == 0)
 	{
-		char *args[] = {user_input, NULL};
-
-		execve(user_input, args, __environ);
+		char *args[2];
+		
+		args[0] = user_input;
+		args[1] = NULL;
+		
+		execvp(user_input, args);
 		perror("Error");
 		exit(1);
 	}
