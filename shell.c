@@ -67,10 +67,11 @@ void execute_command(const char *command, const char *program_name)
  *
  * Return: Always 0.
  */
-int main(void)
+int main(int argc, char *argv[])
 {
     char user_input[MAX];
-
+    
+    (void)argc;
     while (1)
     {
         read_user_input(user_input);
