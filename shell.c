@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h> // Included for EXIT_SUCCESS and EXIT_FAILURE
 
 #define MAX 100
 
@@ -12,7 +13,7 @@ void read_user_input(char *user_input)
     if (fgets(user_input, MAX, stdin) == NULL)
     {
         printf("\n");
-        exit(0);
+        exit(EXIT_SUCCESS);
     }
     user_input[strcspn(user_input, "\n")] = '\0';
 }
@@ -30,7 +31,7 @@ void execute_command(char *command, const char *program_name)
     if (args == NULL)
     {
         perror("malloc");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     args[0] = command;
@@ -40,14 +41,14 @@ void execute_command(char *command, const char *program_name)
     {
         perror("fork");
         free(args);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     else if (pid == 0)
     {
         execve(command, args, NULL);
         perror(program_name);
         free(args);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     else
     {
@@ -56,7 +57,7 @@ void execute_command(char *command, const char *program_name)
         {
             perror("wait");
             free(args);
-            exit(1);
+            exit(EXIT_FAILURE);
         }
         if (WIFEXITED(child_state) && WEXITSTATUS(child_state) == 0)
         {
@@ -90,7 +91,7 @@ int main(int argc, char *argv[])
             {
                 printf("\n");
                 free(user_input);
-                exit(0);
+                exit(EXIT_SUCCESS);
             }
             user_input[strcspn(user_input, "\n")] = '\0';
 
@@ -103,7 +104,7 @@ int main(int argc, char *argv[])
         if (file == NULL)
         {
             perror("fopen");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
 
         while (getline(&user_input, &input_size, file) != -1)
@@ -118,7 +119,7 @@ int main(int argc, char *argv[])
     else
     {
         fprintf(stderr, "Usage: %s [script_file]\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
     return 0;
