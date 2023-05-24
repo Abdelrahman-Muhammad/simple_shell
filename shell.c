@@ -89,7 +89,14 @@ int main(int argc, char *argv[])
       if (user_input != NULL)
         printf("#cisfun$ ");
 
-      if (getline(&user_input, &input_size, stdin) == -1)
+      if (getline(&user_input, &input_size, stdin) != -1)
+      {
+        user_input[strcspn(user_input, "\n")] = '\0';
+        user_input[strcspn(user_input, "\r")] = '\0';
+
+        execute_command(user_input, argv[0]);
+      }
+      else
       {
         if (feof(stdin))
           break;
@@ -99,10 +106,6 @@ int main(int argc, char *argv[])
           exit(EXIT_FAILURE);
         }
       }
-
-      user_input[strcspn(user_input, "\n")] = '\0';
-
-      execute_command(user_input, argv[0]);
     }
   }
   else if (argc == 2)
@@ -117,6 +120,7 @@ int main(int argc, char *argv[])
     while (!feof(file) && getline(&user_input, &input_size, file) != -1)
     {
       user_input[strcspn(user_input, "\n")] = '\0';
+      user_input[strcspn(user_input, "\r")] = '\0';
       execute_command(user_input, argv[0]);
     }
 
