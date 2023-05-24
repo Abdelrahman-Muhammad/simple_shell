@@ -91,8 +91,7 @@ int main(int argc, char *argv[])
 
       if (getline(&user_input, &input_size, stdin) != -1)
       {
-        user_input[strcspn(user_input, "\n")] = '\0';
-        user_input[strcspn(user_input, "\r")] = '\0';
+
         user_input[strlen(user_input) - 1] = '\0';
 
         execute_command(user_input, argv[0]);
@@ -120,8 +119,7 @@ int main(int argc, char *argv[])
 
     while (!feof(file) && getline(&user_input, &input_size, file) != -1)
     {
-      user_input[strcspn(user_input, "\n")] = '\0';
-      user_input[strcspn(user_input, "\r")] = '\0';
+
       user_input[strlen(user_input) - 1] = '\0';
       execute_command(user_input, argv[0]);
     }
