@@ -17,14 +17,14 @@
 #define TOKEN_DELIMITER " \t\r\n\a"
 
 /**
- * struct shell_my_info - this struct contains all relevant my_info on runtime
- * @status: last status of the shell
- * @counter: lines counter
- * @pid: process ID of the shell
- * @av: ARGument Vector
- * @input: command line written by the user
- * @args: arguments of the command line
- * @_env: environment variable
+ * struct shell_my_info - ZZZZZZZZZZZZZZZZZZZZ
+ * @status: ZZZZZZZZZZZZZZZZZ
+ * @counter: ZZZZZZZZZZZZZZ
+ * @pid: ZZZZZZZZZZZZZZZZZ
+ * @av: ZZZZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZZZZZZ
+ * @args: ZZZZZZZZZZZZZZZZZ
+ * @_env: ZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
 typedef struct shell_my_info
 {
@@ -38,9 +38,9 @@ typedef struct shell_my_info
 } shell_my_info_t;
 
 /**
- * struct separator_list_s - single linked list
- * @separator: ; | &
- * @next: next node
+ * struct separator_list_s - ZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @separator: ZZZZZZZZZZZZZZ
+ * @next: ZZZZZZZZZZZZZZZZZ
  */
 typedef struct separator_list_s
 {
@@ -49,9 +49,9 @@ typedef struct separator_list_s
 } separator_list_t;
 
 /**
- * struct command_list_s - single linked list
- * @line: command line
- * @next: next node
+ * struct ZZZZZZZZZZZZZZZZZZ
+ * @line: ZZZZZZZZZZZZZZ
+ * @next: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
 typedef struct command_list_s
 {
@@ -85,7 +85,6 @@ typedef struct FUNCS_INS
 	int (*f)(shell_my_info_t *my_info);
 } builtin_t;
 
-/* Pointer to an array of pointers to strings called the environment */
 extern char **environ;
 
 char **REELOCKAGN(char **ptr, unsigned int old_size, unsigned int new_size);
@@ -133,7 +132,6 @@ void des(separator_list_t **head_s, command_list_t **head_l,
 void COMIN_GET(
 	separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh);
 
-/**replacing varibables*/
 char *CHNAG_THEM(char *input, shell_my_info_t *my_info);
 char *ARE_COMING(replacement_variable_t **head, char *input,
 						 char *new_input, int nlen);
