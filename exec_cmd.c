@@ -37,28 +37,28 @@ char *SEARCH_COMM(char *cmd, char **_environ)
 	path = ENV_VAR("PATH", _environ);
 	if (path)
 	{
-		ptr_path = _strdup(path);
-		len_cmd = _strlen(cmd);
-		token_path = _str_del(ptr_path, ":");
+		ptr_path = LETITDUMP(path);
+		len_cmd = MEAUSE_IT(cmd);
+		token_path = THROW_THEM(ptr_path, ":");
 		i = 0;
 		while (token_path != NULL)
 		{
 			if (CURR_FOLD(path, &i))
 				if (stat(cmd, &st) == 0)
 					return (cmd);
-			len_dir = _strlen(token_path);
+			len_dir = MEAUSE_IT(token_path);
 			dir = malloc(len_dir + len_cmd + 2);
-			_strcpy(dir, token_path);
-			_strcat(dir, "/");
-			_strcat(dir, cmd);
-			_strcat(dir, "\0");
+			OLDANOONE(dir, token_path);
+			OLDONE(dir, "/");
+			OLDONE(dir, cmd);
+			OLDONE(dir, "\0");
 			if (stat(dir, &st) == 0)
 			{
 				free(ptr_path);
 				return (dir);
 			}
 			free(dir);
-			token_path = _str_del(NULL, ":");
+			token_path = THROW_THEM(NULL, ":");
 		}
 		free(ptr_path);
 		if (stat(cmd, &st) == 0)
@@ -129,7 +129,7 @@ int HAPPEND_ERR(char *dir, shell_my_info_t *my_info)
 		return (1);
 	}
 
-	if (_strcmp(my_info->args[0], dir) != 0)
+	if (ARESAMEA(my_info->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{

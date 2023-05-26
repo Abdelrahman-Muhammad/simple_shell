@@ -13,28 +13,28 @@ char *ERR_CD(
 {
 	char *illegal_flag;
 
-	_strcpy(ERR, my_info->av[0]);
-	_strcat(ERR, ": ");
-	_strcat(ERR, ver_str);
-	_strcat(ERR, ": ");
-	_strcat(ERR, my_info->args[0]);
-	_strcat(ERR, msg);
+	OLDANOONE(ERR, my_info->av[0]);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, ver_str);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, my_info->args[0]);
+	OLDONE(ERR, msg);
 	if (my_info->args[1][0] == '-')
 	{
 		illegal_flag = malloc(3);
 		illegal_flag[0] = '-';
 		illegal_flag[1] = my_info->args[1][1];
 		illegal_flag[2] = '\0';
-		_strcat(ERR, illegal_flag);
+		OLDONE(ERR, illegal_flag);
 		free(illegal_flag);
 	}
 	else
 	{
-		_strcat(ERR, my_info->args[1]);
+		OLDONE(ERR, my_info->args[1]);
 	}
 
-	_strcat(ERR, "\n");
-	_strcat(ERR, "\0");
+	OLDONE(ERR, "\n");
+	OLDONE(ERR, "\0");
 	return (ERR);
 }
 
@@ -57,11 +57,11 @@ char *ERR_CDD(shell_my_info_t *my_info)
 	else
 	{
 		msg = ": can't cd to ";
-		len_id = _strlen(my_info->args[1]);
+		len_id = MEAUSE_IT(my_info->args[1]);
 	}
 
-	length = _strlen(my_info->av[0]) + _strlen(my_info->args[0]);
-	length += _strlen(ver_str) + _strlen(msg) + len_id + 5;
+	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(my_info->args[0]);
+	length += MEAUSE_IT(ver_str) + MEAUSE_IT(msg) + len_id + 5;
 	ERR = malloc(sizeof(char) * (length + 1));
 
 	if (ERR == 0)
@@ -89,8 +89,8 @@ char *N_T_FONDE(shell_my_info_t *my_info)
 	char *ver_str;
 
 	ver_str = INT_STR_CONV(my_info->counter);
-	length = _strlen(my_info->av[0]) + _strlen(ver_str);
-	length += _strlen(my_info->args[0]) + 16;
+	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
+	length += MEAUSE_IT(my_info->args[0]) + 16;
 	ERR = malloc(sizeof(char) * (length + 1));
 	if (ERR == 0)
 	{
@@ -98,13 +98,13 @@ char *N_T_FONDE(shell_my_info_t *my_info)
 		free(ver_str);
 		return (NULL);
 	}
-	_strcpy(ERR, my_info->av[0]);
-	_strcat(ERR, ": ");
-	_strcat(ERR, ver_str);
-	_strcat(ERR, ": ");
-	_strcat(ERR, my_info->args[0]);
-	_strcat(ERR, ": not found\n");
-	_strcat(ERR, "\0");
+	OLDANOONE(ERR, my_info->av[0]);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, ver_str);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, my_info->args[0]);
+	OLDONE(ERR, ": not found\n");
+	OLDONE(ERR, "\0");
 	free(ver_str);
 	return (ERR);
 }
@@ -121,22 +121,22 @@ char *EXX_ERR(shell_my_info_t *my_info)
 	char *ver_str;
 
 	ver_str = INT_STR_CONV(my_info->counter);
-	length = _strlen(my_info->av[0]) + _strlen(ver_str);
-	length += _strlen(my_info->args[0]) + _strlen(my_info->args[1]) + 23;
+	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
+	length += MEAUSE_IT(my_info->args[0]) + MEAUSE_IT(my_info->args[1]) + 23;
 	ERR = malloc(sizeof(char) * (length + 1));
 	if (ERR == 0)
 	{
 		free(ver_str);
 		return (NULL);
 	}
-	_strcpy(ERR, my_info->av[0]);
-	_strcat(ERR, ": ");
-	_strcat(ERR, ver_str);
-	_strcat(ERR, ": ");
-	_strcat(ERR, my_info->args[0]);
-	_strcat(ERR, ": Illegal number: ");
-	_strcat(ERR, my_info->args[1]);
-	_strcat(ERR, "\n\0");
+	OLDANOONE(ERR, my_info->av[0]);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, ver_str);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, my_info->args[0]);
+	OLDONE(ERR, ": Illegal number: ");
+	OLDONE(ERR, my_info->args[1]);
+	OLDONE(ERR, "\n\0");
 	free(ver_str);
 
 	return (ERR);

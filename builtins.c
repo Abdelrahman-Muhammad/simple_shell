@@ -20,23 +20,23 @@ int HELP_ME(shell_my_info_t *my_info)
 
 	if (my_info->args[1] == 0)
 		FOR_ALL_HLP();
-	else if (_strcmp(my_info->args[1], "setenv") == 0)
+	else if (ARESAMEA(my_info->args[1], "setenv") == 0)
 		SET_HLP();
-	else if (_strcmp(my_info->args[1], "env") == 0)
+	else if (ARESAMEA(my_info->args[1], "env") == 0)
 		HELP_SHOER();
-	else if (_strcmp(my_info->args[1], "unsetenv") == 0)
+	else if (ARESAMEA(my_info->args[1], "unsetenv") == 0)
 		SET_HLP_SHOWER();
-	else if (_strcmp(my_info->args[1], "help") == 0)
+	else if (ARESAMEA(my_info->args[1], "help") == 0)
 		HELP_SHOW();
-	else if (_strcmp(my_info->args[1], "exit") == 0)
+	else if (ARESAMEA(my_info->args[1], "exit") == 0)
 		BYE_HLP();
-	else if (_strcmp(my_info->args[1], "cd") == 0)
+	else if (ARESAMEA(my_info->args[1], "cd") == 0)
 		HELP_SHOWWW();
-	else if (_strcmp(my_info->args[1], "alias") == 0)
+	else if (ARESAMEA(my_info->args[1], "alias") == 0)
 		HELP_SHOWW();
 	else
 		write(STDERR_FILENO, my_info->args[0],
-		      _strlen(my_info->args[0]));
+		      MEAUSE_IT(my_info->args[0]));
 
 	my_info->status = 0;
 	return (1);
@@ -64,16 +64,16 @@ int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 		ERR = N_T_FONDE(my_info);
 		break;
 	case 2:
-		if (_strcmp("exit", my_info->args[0]) == 0)
+		if (ARESAMEA("exit", my_info->args[0]) == 0)
 			ERR = EXX_ERR(my_info);
-		else if (_strcmp("cd", my_info->args[0]) == 0)
+		else if (ARESAMEA("cd", my_info->args[0]) == 0)
 			ERR = ERR_CDD(my_info);
 		break;
 	}
 
 	if (ERR)
 	{
-		write(STDERR_FILENO, ERR, _strlen(ERR));
+		write(STDERR_FILENO, ERR, MEAUSE_IT(ERR));
 		free(ERR);
 	}
 
@@ -101,7 +101,7 @@ int (*BULT_FUNC_GT(char *cmd))(shell_my_info_t *)
 
 	for (i = 0; builtin[i].name; i++)
 	{
-		if (_strcmp(builtin[i].name, cmd) == 0)
+		if (ARESAMEA(builtin[i].name, cmd) == 0)
 			break;
 	}
 
@@ -123,8 +123,8 @@ int close_my_shell(shell_my_info_t *my_info)
 	if (my_info->args[1] != NULL)
 	{
 		ustatus = STR_INT_CONV(my_info->args[1]);
-		THATS_DIGIT = _isdigit(my_info->args[1]);
-		LEN_OF_STR = _strlen(my_info->args[1]);
+		THATS_DIGIT = ARENUMBERS(my_info->args[1]);
+		LEN_OF_STR = MEAUSE_IT(my_info->args[1]);
 		ENO_NUM = ustatus > (unsigned int)INT_MAX;
 		if (!THATS_DIGIT || LEN_OF_STR > 10 || ENO_NUM)
 		{

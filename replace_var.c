@@ -1,13 +1,12 @@
 #include "shell.h"
 
 /**
- * check_for_environment_variables - function checks
- *					if the typed variable is an env variable
- * @h: pointer to head of linked list
- * @in: pointer to input string
- * @my_info: my_info structure
+ * ENV_VAR_CHKIT -ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @h: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @in: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-void check_for_environment_variables(
+void ENV_VAR_CHKIT(
 		replacement_variable_t **h, char *in, shell_my_info_t *my_info)
 {
 	int row, chr, j, lval;
@@ -19,7 +18,7 @@ void check_for_environment_variables(
 		{
 			if (_envr[row][chr] == '=')
 			{
-				lval = _strlen(_envr[row] + chr + 1);
+				lval = MEAUSE_IT(_envr[row] + chr + 1);
 				ADD_IT_FLY(
 						h, j, _envr[row] + chr + 1, lval);
 				return;
@@ -39,17 +38,17 @@ void check_for_environment_variables(
 	ADD_IT_FLY(h, j, NULL, 0);
 }
 /**
- * replace_variables - this function checks if the typed variable is $$ or $?
- * @h: head of the linked list
- * @in: input string
- * @st: last status of the Shell
- * @my_info: my_info structure
- * Return: returns an integer
+ * CHNG_VAR - ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @h: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @in: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @st: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-int replace_variables(
+int CHNG_VAR(
 		replacement_variable_t **h, char *in, char *st, shell_my_info_t *my_info)
 {
-	int i, lst = _strlen(st), lpd = _strlen(my_info->pid);
+	int i, lst = MEAUSE_IT(st), lpd = MEAUSE_IT(my_info->pid);
 
 	for (i = 0; in[i]; i++)
 	{
@@ -70,21 +69,21 @@ int replace_variables(
 			else if (in[i + 1] == ';')
 				ADD_IT_FLY(h, 0, NULL, 0);
 			else
-				check_for_environment_variables(h, in + i, my_info);
+				ENV_VAR_CHKIT(h, in + i, my_info);
 		}
 	}
 	return (i);
 }
 
 /**
- * get_replaced_input - replaces string into variables
- * @head: head of the linked list
- * @input: input string
- * @new_input: new input string (replaced)
- * @nlen: new length
- * Return: replaced string
+ * ARE_COMING - ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @head: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @new_input: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @nlen: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char *get_replaced_input(
+char *ARE_COMING(
 		replacement_variable_t **head, char *input, char *new_input, int nlen)
 {
 	int i, j, k;
@@ -127,12 +126,12 @@ char *get_replaced_input(
 }
 
 /**
- * *replace_variable - function calls functions to replace string into vars
- * @input: input string
- * @my_infosh: my_info structure
- * Return: replaced string
+ * *CHNAG_THEM - ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * @my_infosh: ZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char *replace_variable(char *input, shell_my_info_t *my_infosh)
+char *CHNAG_THEM(char *input, shell_my_info_t *my_infosh)
 {
 	replacement_variable_t *head, *index;
 	char *status, *new_input;
@@ -141,7 +140,7 @@ char *replace_variable(char *input, shell_my_info_t *my_infosh)
 	status = INT_STR_CONV(my_infosh->status);
 	head = NULL;
 
-	olen = replace_variables(&head, input, status, my_infosh);
+	olen = CHNG_VAR(&head, input, status, my_infosh);
 
 	if (head == NULL)
 	{
@@ -163,7 +162,7 @@ char *replace_variable(char *input, shell_my_info_t *my_infosh)
 	new_input = malloc(sizeof(char) * (nlen + 1));
 	new_input[nlen] = '\0';
 
-	new_input = get_replaced_input(&head, input, new_input, nlen);
+	new_input = ARE_COMING(&head, input, new_input, nlen);
 
 	free(input);
 	free(status);

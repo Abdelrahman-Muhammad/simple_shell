@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * str_rev- this function reverses a string.
- * @s: input string.
+ * RANDOM_IT- ZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZZZ
  */
-void str_rev(char *s)
+void RANDOM_IT(char *s)
 {
-	int i, len = _strlen(s);
+	int i, len = MEAUSE_IT(s);
 	char temp;
 
 	for (i = 0; i < len / 2; i++)

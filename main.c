@@ -39,7 +39,7 @@ void I_WANT_THESE(shell_my_info_t *my_info, char **av)
 
 	for (i = 0; environ[i]; i++)
 	{
-		my_info->_env[i] = _strdup(environ[i]);
+		my_info->_env[i] = LETITDUMP(environ[i]);
 	}
 
 	my_info->_env[i] = NULL;

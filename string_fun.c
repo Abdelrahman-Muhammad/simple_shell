@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strcat - tis function pointer concatenates two strings
- * @des: destination pointer
- * @src: source pointer
- * Return: returns concatenated pointer
+ * OLDONE - ZZZZZZZZZZZZZZZZZ
+ * @des: ZZZZZZZZZZZZZZ
+ * @src: ZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char *_strcat(char *des, const char *src)
+char *OLDONE(char *des, const char *src)
 {
 	char *ptr = des;
 
@@ -23,13 +23,12 @@ char *_strcat(char *des, const char *src)
 	return (des);
 }
 /**
- * *_strcpy - this function copies the string pointed to by src
- *		to the buffer pointed to by des.
- * @des: destination pointer
- * @src: source pointer
- * Return: returns a pointer to the destination string
+ * *OLDANOONE - ZZZZZZZZZZZZZZZZ
+ * @des: ZZZZZZZZZZZ
+ * @src: ZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZ
  */
-char *_strcpy(char *des, char *src)
+char *OLDANOONE(char *des, char *src)
 {
 
 	size_t i;
@@ -42,12 +41,12 @@ char *_strcpy(char *des, char *src)
 	return (des);
 }
 /**
- * _strcmp - this function compares two strings.
- * @s1: string to be compared
- * @s2: string to be compared
- * Return: returns an integer
+ * ARESAMEA - ZZZZZZZZZZZZZZZZZZZZZ
+ * @s1: ZZZZZZZZZZZZZZZZZZZZZ
+ * @s2: ZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZ
  */
-int _strcmp(char *s1, char *s2)
+int ARESAMEA(char *s1, char *s2)
 {
 	while (*s1 != '\0' && *s2 != '\0')
 	{
@@ -65,13 +64,12 @@ int _strcmp(char *s1, char *s2)
 	return ((*s1 == '\0') ? -1 : 1);
 }
 /**
- * _strchr - this function locates a character in a string,
- * @s: string.
- * @c: character.
- * Return: returns a pointer to the first occurrence of c in string s
- *		or NULL if c is not found
+ * ARESAMEAAA - ZZZZZZZZZZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZZZZZ
+ * @c: ZZZZZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char *_strchr(char *s, char c)
+char *ARESAMEAAA(char *s, char c)
 {
 	while (*s != '\0' && *s != c)
 		s++;
@@ -79,13 +77,12 @@ char *_strchr(char *s, char c)
 	return ((*s == c) ? s : NULL);
 }
 /**
- * _strspn - this function gets the length of a prefix substring.
- * @s: string of characters.
- * @s2: bytes in initial segment of s
- * Return: returns number of bytes in initial segment of s which consists of
- *		only bytes from s2
+ * SPOOON - ZZZZZZZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZZZZZZZZ
+ * @s2: ZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZ
  */
-int _strspn(char *s, char *s2)
+int SPOOON(char *s, char *s2)
 {
 	int i, j, found;
 

@@ -75,11 +75,11 @@ typedef struct replacement_variable_list
 } replacement_variable_t;
 
 /**
- * struct builtin_s - struct for builtin command arguments.
- * @name: The name of the builtin command i.e ls, cd, echo
- * @f: my_info type pointer function.
+ * struct FUNCS_INS - ZZZZZZZZZZZZZZZZZ
+ * @name: ZZZZZZZZZZZZZZZZZZZZZZZ
+ * @f: ZZZZZZZZZZZZZZZZZZZZ
  */
-typedef struct builtin_s
+typedef struct FUNCS_INS
 {
 	char *name;
 	int (*f)(shell_my_info_t *my_info);
@@ -101,19 +101,19 @@ replacement_variable_t *ADD_IT_FLY(
 	replacement_variable_t **head, int lvar, char *var, int lval);
 void MAKE_IT_FLY_ZR(replacement_variable_t **head);
 
-int _strcmp(char *s1, char *s2);
-int _strspn(char *s, char *s2);
-char *_strchr(char *s, char c);
-char *_strcpy(char *des, char *src);
-char *_strcat(char *des, const char *src);
+int ARESAMEA(char *s1, char *s2);
+int SPOOON(char *s, char *s2);
+char *ARESAMEAAA(char *s, char c);
+char *OLDANOONE(char *des, char *src);
+char *OLDONE(char *des, const char *src);
 
-int _strlen(const char *s);
-int _isdigit(const char *s);
-int cmp_chars(char str[], const char *delim);
-char *_str_del(char str[], const char *delim);
-char *_strdup(const char *s);
+int MEAUSE_IT(const char *s);
+int ARENUMBERS(const char *s);
+int NOT_SAM(char str[], const char *delim);
+char *THROW_THEM(char str[], const char *delim);
+char *LETITDUMP(const char *s);
 
-void str_rev(char *s);
+void RANDOM_IT(char *s);
 
 int ONE_CHAR(char *input, int *i);
 int REP_CHK(char *input, int i);
@@ -126,20 +126,20 @@ void MAIN_APP(shell_my_info_t *my_info);
 
 /* split.c */
 char **split_input(char *input);
-char *swap_char(char *input, int bool);
-int split_cmd_op(shell_my_info_t *my_info, char *input);
+char *REVERP_IT(char *input, int bool);
+int DIVIDE_ITOP(shell_my_info_t *my_info, char *input);
 void des(separator_list_t **head_s, command_list_t **head_l,
 		 char *input);
-void get_next(
+void COMIN_GET(
 	separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh);
 
 /**replacing varibables*/
-char *replace_variable(char *input, shell_my_info_t *my_info);
-char *get_replaced_input(replacement_variable_t **head, char *input,
+char *CHNAG_THEM(char *input, shell_my_info_t *my_info);
+char *ARE_COMING(replacement_variable_t **head, char *input,
 						 char *new_input, int nlen);
-int replace_variables(replacement_variable_t **h, char *in, char *st,
+int CHNG_VAR(replacement_variable_t **h, char *in, char *st,
 					  shell_my_info_t *my_info);
-void check_for_environment_variables(replacement_variable_t **h, char *in,
+void ENV_VAR_CHKIT(replacement_variable_t **h, char *in,
 									 shell_my_info_t *my_info);
 
 ssize_t BUFFER_GET(char **lineptr, size_t *n, FILE *stream);

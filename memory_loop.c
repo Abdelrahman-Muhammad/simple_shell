@@ -156,8 +156,8 @@ void MAIN_APP(shell_my_info_t *my_info)
 				my_info->status = 2;
 				continue;
 			}
-			input = replace_variable(input, my_info);
-			loop = split_cmd_op(my_info, input);
+			input = CHNAG_THEM(input, my_info);
+			loop = DIVIDE_ITOP(my_info, input);
 			my_info->counter++;
 		}
 		else

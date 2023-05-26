@@ -10,29 +10,29 @@ void PAR_DIR(shell_my_info_t *my_info)
 	char *dir, *cp_pwd, *cp_str_del_pwd;
 
 	getcwd(pwd, sizeof(pwd));
-	cp_pwd = _strdup(pwd);
+	cp_pwd = LETITDUMP(pwd);
 	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 	dir = my_info->args[1];
-	if (_strcmp(".", dir) == 0)
+	if (ARESAMEA(".", dir) == 0)
 	{
 		ENV_SETTER("PWD", cp_pwd, my_info);
 		free(cp_pwd);
 		return;
 	}
-	if (_strcmp("/", cp_pwd) == 0)
+	if (ARESAMEA("/", cp_pwd) == 0)
 	{
 		free(cp_pwd);
 		return;
 	}
 	cp_str_del_pwd = cp_pwd;
-	str_rev(cp_str_del_pwd);
-	cp_str_del_pwd = _str_del(cp_str_del_pwd, "/");
+	RANDOM_IT(cp_str_del_pwd);
+	cp_str_del_pwd = THROW_THEM(cp_str_del_pwd, "/");
 	if (cp_str_del_pwd != NULL)
 	{
-		cp_str_del_pwd = _str_del(NULL, "\0");
+		cp_str_del_pwd = THROW_THEM(NULL, "\0");
 
 		if (cp_str_del_pwd != NULL)
-			str_rev(cp_str_del_pwd);
+			RANDOM_IT(cp_str_del_pwd);
 	}
 	if (cp_str_del_pwd != NULL)
 	{
@@ -66,10 +66,10 @@ void SOME_DEST(shell_my_info_t *my_info)
 		return;
 	}
 
-	cp_pwd = _strdup(pwd);
+	cp_pwd = LETITDUMP(pwd);
 	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 
-	cp_dir = _strdup(dir);
+	cp_dir = LETITDUMP(dir);
 	ENV_SETTER("PWD", cp_dir, my_info);
 
 	free(cp_pwd);
@@ -90,14 +90,14 @@ void PREV_DIC(shell_my_info_t *my_info)
 	char *p_pwd, *p_oldpwd, *cp_pwd, *cp_oldpwd;
 
 	getcwd(pwd, sizeof(pwd));
-	cp_pwd = _strdup(pwd);
+	cp_pwd = LETITDUMP(pwd);
 
 	p_oldpwd = ENV_VAR("OLDPWD", my_info->_env);
 
 	if (p_oldpwd == NULL)
 		cp_oldpwd = cp_pwd;
 	else
-		cp_oldpwd = _strdup(p_oldpwd);
+		cp_oldpwd = LETITDUMP(p_oldpwd);
 
 	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 
@@ -108,7 +108,7 @@ void PREV_DIC(shell_my_info_t *my_info)
 
 	p_pwd = ENV_VAR("PWD", my_info->_env);
 
-	write(STDOUT_FILENO, p_pwd, _strlen(p_pwd));
+	write(STDOUT_FILENO, p_pwd, MEAUSE_IT(p_pwd));
 	write(STDOUT_FILENO, "\n", 1);
 
 	free(cp_pwd);
@@ -130,7 +130,7 @@ void HOUSE_DIR(shell_my_info_t *my_info)
 	char pwd[PATH_MAX];
 
 	getcwd(pwd, sizeof(pwd));
-	p_pwd = _strdup(pwd);
+	p_pwd = LETITDUMP(pwd);
 
 	home = ENV_VAR("HOME", my_info->_env);
 
@@ -168,9 +168,9 @@ int CURR_CHNG(shell_my_info_t *my_info)
 
 	if (dir != NULL)
 	{
-		ishome = _strcmp("$HOME", dir);
-		ishome2 = _strcmp("~", dir);
-		isddash = _strcmp("--", dir);
+		ishome = ARESAMEA("$HOME", dir);
+		ishome2 = ARESAMEA("~", dir);
+		isddash = ARESAMEA("--", dir);
 	}
 
 	if (dir == NULL || !ishome || !ishome2 || !isddash)
@@ -179,13 +179,13 @@ int CURR_CHNG(shell_my_info_t *my_info)
 		return (1);
 	}
 
-	if (_strcmp("-", dir) == 0)
+	if (ARESAMEA("-", dir) == 0)
 	{
 		PREV_DIC(my_info);
 		return (1);
 	}
 
-	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
+	if (ARESAMEA(".", dir) == 0 || ARESAMEA("..", dir) == 0)
 	{
 		PAR_DIR(my_info);
 		return (1);

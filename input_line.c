@@ -30,7 +30,7 @@ void USER_LINE_B(
 	}
 	else
 	{
-		_strcpy(*lineptr, buffer);
+		OLDANOONE(*lineptr, buffer);
 		free(buffer);
 	}
 }

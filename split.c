@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * swap_char - this function swaps | and & for non-printed chars
- * @input: input string
- * @bool: type of swap
- * Return: returns swapped string
+ * REVERP_IT - ZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZ
+ * @bool: ZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZ
  */
-char *swap_char(char *input, int bool)
+char *REVERP_IT(char *input, int bool)
 {
 	int i;
 
@@ -43,18 +43,18 @@ char *swap_char(char *input, int bool)
 }
 
 /**
- * add_nodes - this function adds separators and cmd lines in the lists
- * @head_s: pointer to head node of separatorlist
- * @head_l: pointer to head node of command lines list
- * @input: input string
+ * NEW_IFO - ZZZZZZZZZZZZZZZZZZZZ
+ * @head_s: ZZZZZZZZZZZZZZZZZZ
+ * @head_l:ZZZZZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZZZZZZZZZZ
  */
-void add_nodes(
+void NEW_IFO(
 		separator_list_t **head_s, command_list_t **head_l, char *input)
 {
 	int i;
 	char *line;
 
-	input = swap_char(input, 0);
+	input = REVERP_IT(input, 0);
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == ';')
@@ -66,22 +66,22 @@ void add_nodes(
 			i++;
 		}
 	}
-	line = _str_del(input, ";|&");
+	line = THROW_THEM(input, ";|&");
 	while (line != NULL)
 	{
-		line = swap_char(line, 1);
+		line = REVERP_IT(line, 1);
 		DO_SOME_TWKS(head_l, line);
-		line = _str_del(NULL, ";|&");
+		line = THROW_THEM(NULL, ";|&");
 	}
 }
 
 /**
- * get_next - this function moves to the next stored command line
- * @list_s: separatorlist
- * @list_l: command line list
- * @my_infosh: my_info structure pointer
+ * COMIN_GET - ZZZZZZZZZZZZZZZ
+ * @list_s: ZZZZZZZZZZZZZZZZZ
+ * @list_l:ZZZZZZZZZZZZZZZ
+ * @my_infosh: ZZZZZZZZZZZZZZZ
  */
-void get_next(
+void COMIN_GET(
 		separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh)
 {
 	int loop_sep = 1;
@@ -111,19 +111,18 @@ void get_next(
 	*list_l = ls_l;
 }
 /**
- * split_cmd_op - splits command lines according to
- *				the separators ;, | and &, and executes them
- * @my_info: my_info structure
- * @input: input string
- * Return: 0 to exit, 1 to continue
+ * DIVIDE_ITOP -ZZZZZZZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZ
+ * Return: 0 ZZZZZZZZZZZZZZZZ
  */
-int split_cmd_op(shell_my_info_t *my_info, char *input)
+int DIVIDE_ITOP(shell_my_info_t *my_info, char *input)
 {
 	int loop;
 	separator_list_t *list_s, *head_s = NULL;
 	command_list_t *list_l, *head_l = NULL;
 
-	add_nodes(&head_s, &head_l, input);
+	NEW_IFO(&head_s, &head_l, input);
 
 	list_s = head_s;
 	list_l = head_l;
@@ -138,7 +137,7 @@ int split_cmd_op(shell_my_info_t *my_info, char *input)
 		if (loop == 0)
 			break;
 
-		get_next(&list_s, &list_l, my_info);
+		COMIN_GET(&list_s, &list_l, my_info);
 
 		if (list_l != NULL)
 			list_l = list_l->next;
@@ -150,9 +149,9 @@ int split_cmd_op(shell_my_info_t *my_info, char *input)
 }
 
 /**
- * split_input - this function tokenizes the input string
- * @input: input string.
- * Return: returns the splitted string
+ * split_input - ZZZZZZZZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZ
  */
 char **split_input(char *input)
 {
@@ -166,7 +165,7 @@ char **split_input(char *input)
 		exit(EXIT_FAILURE);
 	}
 
-	token = _str_del(input, TOKEN_DELIMITER);
+	token = THROW_THEM(input, TOKEN_DELIMITER);
 	tokens[0] = token;
 
 	for (i = 1; token != NULL; i++)
@@ -181,7 +180,7 @@ char **split_input(char *input)
 				exit(EXIT_FAILURE);
 			}
 		}
-		token = _str_del(NULL, TOKEN_DELIMITER);
+		token = THROW_THEM(NULL, TOKEN_DELIMITER);
 		tokens[i] = token;
 	}
 	return (tokens);

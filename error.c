@@ -119,8 +119,8 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 	msg2 = ": Syntax ERR: \"";
 	msg3 = "\" unexpected\n";
 	counter = INT_STR_CONV(my_info->counter);
-	length = _strlen(my_info->av[0]) + _strlen(counter) + _strlen(msg) +
-		_strlen(msg2) + _strlen(msg3) + 3;
+	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(counter) + MEAUSE_IT(msg) +
+		MEAUSE_IT(msg2) + MEAUSE_IT(msg3) + 3;
 
 	ERR = malloc(sizeof(char) * (length));
 	if (ERR == NULL)
@@ -128,13 +128,13 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 		free(counter);
 		return;
 	}
-	_strcpy(ERR, my_info->av[0]);
-	_strcat(ERR, ": ");
-	_strcat(ERR, counter);
-	_strcat(ERR, msg2);
-	_strcat(ERR, msg);
-	_strcat(ERR, msg3);
-	_strcat(ERR, "\0");
+	OLDANOONE(ERR, my_info->av[0]);
+	OLDONE(ERR, ": ");
+	OLDONE(ERR, counter);
+	OLDONE(ERR, msg2);
+	OLDONE(ERR, msg);
+	OLDONE(ERR, msg3);
+	OLDONE(ERR, "\0");
 	ERR[length - 1] = '\0';
 
 	write(STDERR_FILENO, ERR, length - 1);

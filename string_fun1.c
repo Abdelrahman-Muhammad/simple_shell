@@ -1,13 +1,12 @@
 #include "shell.h"
 
 /**
- * _strdup - this function duplicates a str in the heap memory.
- * @s: string parameter to be passed
- * Return: returns the duplicated string
+ * LETITDUMP - ZZZZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZreturns the duplicated string
  */
-char *_strdup(const char *s)
+char *LETITDUMP(const char *s)
 {
-	size_t len = _strlen(s) + 1;
+	size_t len = MEAUSE_IT(s) + 1;
 	char *copy = malloc(sizeof(char) * len);
 
 	if (copy != NULL)
@@ -17,11 +16,11 @@ char *_strdup(const char *s)
 }
 
 /**
- * _strlen - this function returns the lenght of a string.
- * @s: string parameter to be passed
- * Return: return the length of the string
+ * MEAUSE_IT - ZZZZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZ
  */
-int _strlen(const char *s)
+int MEAUSE_IT(const char *s)
 {
 	int len = 0;
 
@@ -34,12 +33,12 @@ int _strlen(const char *s)
 }
 
 /**
- * cmp_chars - this function compares characters of strings
- * @str: input string
- * @delim: delimiter
- * Return: 1 if strings are equal and 0 if otherwise
+ * NOT_SAM - ZZZZZZZZZZZZZZZZZ
+ * @str: ZZZZZZZZZZZZZZZZ
+ * @delim: ZZZZZZZZZZZZZZZZZZZ
+ * Return: 1 ZZZZZZZZZZZZZZ
  */
-int cmp_chars(char str[], const char *delim)
+int NOT_SAM(char str[], const char *delim)
 {
 	unsigned int i, j, k = 0;
 
@@ -58,12 +57,12 @@ int cmp_chars(char str[], const char *delim)
 }
 
 /**
- * _str_del - splits a string by some delimiter.
- * @str: input string.
- * @del: delimiter.
- * Return: string splited.
+ * THROW_THEM - ZZZZZZZZZZZZZZZZZZZZ
+ * @str: ZZZZZZZZZZZZZZZZ
+ * @del: ZZZZZZZZZZZZZZZZZZZZZZZ.
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char *_str_del(char str[], const char *del)
+char *THROW_THEM(char str[], const char *del)
 {
 	char *current_char;
 	unsigned int i, token_founded;
@@ -71,23 +70,21 @@ char *_str_del(char str[], const char *del)
 
 	if (str != NULL)
 	{
-		if (cmp_chars(str, del))
+		if (NOT_SAM(str, del))
 			return (NULL);
-		token_start = str; /* Storing first address */
-		i = _strlen(str);
-		token_end = &str[i]; /* Storing last address */
+		token_start = str; 
+		i = MEAUSE_IT(str);
+		token_end = &str[i]; 
 	}
 	current_char = token_start;
-	if (current_char == token_end) /* Reaching the end */
+	if (current_char == token_end) 
 		return (NULL);
 
 	for (token_founded = 0; *token_start; token_start++)
 	{
-		/*  finding the next token */
 		if (token_start != current_char)
 			if (*token_start && *(token_start - 1) == '\0')
 				break;
-		/* Replacing delimiter for nullchar */
 		for (i = 0; del[i]; i++)
 		{
 			if (*token_start == del[i])
@@ -98,7 +95,7 @@ char *_str_del(char str[], const char *del)
 				break;
 			}
 		}
-		if (token_founded == 0 && *token_start) /* Str != Delimiter */
+		if (token_founded == 0 && *token_start) 
 			token_founded = 1;
 	}
 	if (token_founded == 0)
@@ -107,11 +104,11 @@ char *_str_del(char str[], const char *del)
 }
 
 /**
- * _isdigit - this function checks if an input string paramater is a digit
- * @s: input string
- * Return: returns 1 if string is a number and 0 if otherwise
+ * ARENUMBERS - ZZZZZZZZZZZZZZZZ
+ * @s: ZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-int _isdigit(const char *s)
+int ARENUMBERS(const char *s)
 {
 	unsigned int i;
 

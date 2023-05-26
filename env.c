@@ -32,14 +32,14 @@ char *INF_CPY(char *name, char *value)
 	char *new;
 	int len_name, len_value, len;
 
-	len_name = _strlen(name);
-	len_value = _strlen(value);
+	len_name = MEAUSE_IT(name);
+	len_value = MEAUSE_IT(value);
 	len = len_name + len_value + 2;
 	new = malloc(sizeof(char) * (len));
-	_strcpy(new, name);
-	_strcat(new, "=");
-	_strcat(new, value);
-	_strcat(new, "\0");
+	OLDANOONE(new, name);
+	OLDONE(new, "=");
+	OLDONE(new, value);
+	OLDONE(new, "\0");
 
 	return (new);
 }
@@ -58,9 +58,9 @@ void ENV_SETTER(char *name, char *value, shell_my_info_t *my_info)
 
 	for (i = 0; my_info->_env[i]; i++)
 	{
-		var_env = _strdup(my_info->_env[i]);
-		name_env = _str_del(var_env, "=");
-		if (_strcmp(name_env, name) == 0)
+		var_env = LETITDUMP(my_info->_env[i]);
+		name_env = THROW_THEM(var_env, "=");
+		if (ARESAMEA(name_env, name) == 0)
 		{
 			free(my_info->_env[i]);
 			my_info->_env[i] = INF_CPY(name_env, value);
@@ -113,9 +113,9 @@ int _DNTSETENV(shell_my_info_t *my_info)
 	k = -1;
 	for (i = 0; my_info->_env[i]; i++)
 	{
-		var_env = _strdup(my_info->_env[i]);
-		name_env = _str_del(var_env, "=");
-		if (_strcmp(name_env, my_info->args[1]) == 0)
+		var_env = LETITDUMP(my_info->_env[i]);
+		name_env = THROW_THEM(var_env, "=");
+		if (ARESAMEA(name_env, my_info->args[1]) == 0)
 		{
 			k = i;
 		}
