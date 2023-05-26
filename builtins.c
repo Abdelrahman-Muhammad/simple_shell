@@ -43,10 +43,10 @@ int HELP_ME(shell_my_info_t *my_info)
 }
 
 /**
- * CODE_ERR_GET - ASHGFJHGKBV
- * @my_info: AAAWRET SAGNV,.VCBXZ
- * @eval: AFSAF AGDHFGMVBC
- * Return: SAFHFGH
+ * CODE_ERR_GET - Invalid error code.
+ * @my_info: Pointer to information about the error.
+ * @eval: Pointer to the evaluation to be executed.
+ * Return: 0 if successful, -1 otherwise.
  */
 int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 {
