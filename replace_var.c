@@ -138,7 +138,7 @@ char *replace_variable(char *input, shell_my_info_t *my_infosh)
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = int_to_string(my_infosh->status);
+	status = INT_STR_CONV(my_infosh->status);
 	head = NULL;
 
 	olen = replace_variables(&head, input, status, my_infosh);

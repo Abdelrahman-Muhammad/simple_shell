@@ -156,8 +156,8 @@ int _current_dir(char *path, int *i);
 int cmd_exec(shell_my_info_t *my_info);
 int check_cmd_err(char *dir, shell_my_info_t *my_info);
 
-int print_env_var(shell_my_info_t *my_info);
-char *get_env(const char *name, char **_env);
+int ENV_VAR_GET(shell_my_info_t *my_info);
+char *ENV_VAR(const char *name, char **_env);
 
 int _setenv(shell_my_info_t *my_info);
 int _unsetenv(shell_my_info_t *my_infosh);
@@ -171,9 +171,9 @@ void change_to_home_dir(shell_my_info_t *my_info);
 void change_to_ols_dir(shell_my_info_t *my_info);
 int change_directory_shell(shell_my_info_t *my_info);
 
-int get_len_int(int n);
-int str_to_int(char *s);
-char *int_to_string(int n);
+int INT_LEN(int n);
+int STR_INT_CONV(char *s);
+char *INT_STR_CONV(int n);
 
 char *error_message_get_cd(shell_my_info_t *my_info);
 char *error_message_not_found(shell_my_info_t *my_info);

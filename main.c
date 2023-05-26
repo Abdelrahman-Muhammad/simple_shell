@@ -43,7 +43,7 @@ void set_my_info(shell_my_info_t *my_info, char **av)
 	}
 
 	my_info->_env[i] = NULL;
-	my_info->pid = int_to_string(getpid());
+	my_info->pid = INT_STR_CONV(getpid());
 }
 
 /**

@@ -93,7 +93,7 @@ void change_to_ols_dir(shell_my_info_t *my_info)
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
 
-	p_oldpwd = get_env("OLDPWD", my_info->_env);
+	p_oldpwd = ENV_VAR("OLDPWD", my_info->_env);
 
 	if (p_oldpwd == NULL)
 		cp_oldpwd = cp_pwd;
@@ -107,7 +107,7 @@ void change_to_ols_dir(shell_my_info_t *my_info)
 	else
 		set_env("PWD", cp_oldpwd, my_info);
 
-	p_pwd = get_env("PWD", my_info->_env);
+	p_pwd = ENV_VAR("PWD", my_info->_env);
 
 	write(STDOUT_FILENO, p_pwd, _strlen(p_pwd));
 	write(STDOUT_FILENO, "\n", 1);
@@ -133,7 +133,7 @@ void change_to_home_dir(shell_my_info_t *my_info)
 	getcwd(pwd, sizeof(pwd));
 	p_pwd = _strdup(pwd);
 
-	home = get_env("HOME", my_info->_env);
+	home = ENV_VAR("HOME", my_info->_env);
 
 	if (home == NULL)
 	{

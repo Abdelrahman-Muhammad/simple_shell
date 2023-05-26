@@ -118,7 +118,7 @@ void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
 
 	msg2 = ": Syntax error: \"";
 	msg3 = "\" unexpected\n";
-	counter = int_to_string(my_info->counter);
+	counter = INT_STR_CONV(my_info->counter);
 	length = _strlen(my_info->av[0]) + _strlen(counter) + _strlen(msg) +
 		_strlen(msg2) + _strlen(msg3) + 3;
 

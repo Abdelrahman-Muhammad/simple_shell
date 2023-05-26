@@ -35,7 +35,7 @@ char *find_cmd(char *cmd, char **_environ)
 	int len_dir, len_cmd, i;
 	struct stat st;
 
-	path = get_env("PATH", _environ);
+	path = ENV_VAR("PATH", _environ);
 	if (path)
 	{
 		ptr_path = _strdup(path);

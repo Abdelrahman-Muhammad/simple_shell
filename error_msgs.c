@@ -48,7 +48,7 @@ char *error_message_get_cd(shell_my_info_t *my_info)
 	int length, len_id;
 	char *error, *ver_str, *msg;
 
-	ver_str = int_to_string(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->counter);
 	if (my_info->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
@@ -88,7 +88,7 @@ char *error_message_not_found(shell_my_info_t *my_info)
 	char *error;
 	char *ver_str;
 
-	ver_str = int_to_string(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->counter);
 	length = _strlen(my_info->av[0]) + _strlen(ver_str);
 	length += _strlen(my_info->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
@@ -120,7 +120,7 @@ char *error_message_exit_shell(shell_my_info_t *my_info)
 	char *error;
 	char *ver_str;
 
-	ver_str = int_to_string(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->counter);
 	length = _strlen(my_info->av[0]) + _strlen(ver_str);
 	length += _strlen(my_info->args[0]) + _strlen(my_info->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));

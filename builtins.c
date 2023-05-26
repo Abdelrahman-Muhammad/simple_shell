@@ -89,7 +89,7 @@ int err_code_generate(shell_my_info_t *my_info, int eval)
 int (*get_builtin_function(char *cmd))(shell_my_info_t *)
 {
 	builtin_t builtin[] = {
-		{ "env", print_env_var },
+		{ "env", ENV_VAR_GET },
 		{ "exit", close_my_shell },
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
@@ -122,7 +122,7 @@ int close_my_shell(shell_my_info_t *my_info)
 
 	if (my_info->args[1] != NULL)
 	{
-		ustatus = str_to_int(my_info->args[1]);
+		ustatus = STR_INT_CONV(my_info->args[1]);
 		is_digit = _isdigit(my_info->args[1]);
 		str_len = _strlen(my_info->args[1]);
 		big_number = ustatus > (unsigned int)INT_MAX;

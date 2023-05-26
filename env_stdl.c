@@ -1,21 +1,18 @@
 #include "shell.h"
 
 /**
- * get_env - this fucntion gets an environment variable
- * @name: name of the environment variable
- * @_env: environment variable
- * Return: value of the environment variable if is found.
- *		In other case, returns NULL.
+ * ENV_VAR - DFGFDGDF
+ * @name: ABDTDSFDGO
+ * @_env: TEST
+ * Return: DFGFGDFG
  */
-char *get_env(const char *name, char **_env)
+char *ENV_VAR(const char *name, char **_env)
 {
 	char *ptr_env;
 	int i, k;
 
-	/* Initialize ptr_env value */
 	ptr_env = NULL;
 	k = 0;
-	/* Comparing all environment variables */
 	for (i = 0; _env[i]; i++)
 	{
 		k = compare_environement_variable_name(_env[i], name);
@@ -30,11 +27,11 @@ char *get_env(const char *name, char **_env)
 }
 
 /**
- * print_env_var - prints the evironment variables
- * @my_info: my_info relevant.
- * Return: 1 on success.
+ * ENV_VAR_GET - FGHFGHFGH
+ * @my_info: FGHFGHFGH
+ * Return: 1 FGHFGHFGHERTYTRY
  */
-int print_env_var(shell_my_info_t *my_info)
+int ENV_VAR_GET(shell_my_info_t *my_info)
 {
 	int i, j;
 
@@ -53,11 +50,11 @@ int print_env_var(shell_my_info_t *my_info)
 }
 
 /**
- * get_len_int - this function gets the lenght of a number.
- * @n: type int number.
- * Return: Lenght of a number.
+ * INT_LEN - this ASDSFAHGFH
+ * @n: tDFGypFeFGFJBVM
+ * Return: FGHDFHFHFH
  */
-int get_len_int(int n)
+int INT_LEN(int n)
 {
 	unsigned int n1;
 	int lenght = 1;
@@ -80,14 +77,14 @@ int get_len_int(int n)
 	return (lenght);
 }
 /**
- * int_to_string - this function converts int to string.
- * @n: type int number
- * Return: String.
+ * INT_STR_CONV - WTREUTRY
+ * @n: ASHFHJHG
+ * Return: StDGDFGring.
  */
-char *int_to_string(int n)
+char *INT_STR_CONV(int n)
 {
 	unsigned int n1;
-	int lenght = get_len_int(n);
+	int lenght = INT_LEN(n);
 	char *buffer;
 
 	buffer = malloc(sizeof(char) * (lenght + 1));
@@ -116,11 +113,11 @@ char *int_to_string(int n)
 }
 
 /**
- * str_to_int - this function converts a string to an integer.
- * @s: input string.
- * Return: integer.
+ * STR_INT_CONV - ASDGDFH
+ * @s: FDGJGHKJ
+ * Return: RYIIUPOIPO
  */
-int str_to_int(char *s)
+int STR_INT_CONV(char *s)
 {
 	unsigned int count = 0, size = 0, oi = 0, pn = 1, m = 1, i;
 
