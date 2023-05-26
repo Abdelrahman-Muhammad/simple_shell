@@ -72,12 +72,12 @@ char *THROW_THEM(char str[], const char *del)
 	{
 		if (NOT_SAM(str, del))
 			return (NULL);
-		token_start = str; 
+		token_start = str;
 		i = MEAUSE_IT(str);
-		token_end = &str[i]; 
+		token_end = &str[i];
 	}
 	current_char = token_start;
-	if (current_char == token_end) 
+	if (current_char == token_end)
 		return (NULL);
 
 	for (token_founded = 0; *token_start; token_start++)
@@ -95,7 +95,7 @@ char *THROW_THEM(char str[], const char *del)
 				break;
 			}
 		}
-		if (token_founded == 0 && *token_start) 
+		if (token_founded == 0 && *token_start)
 			token_founded = 1;
 	}
 	if (token_founded == 0)
