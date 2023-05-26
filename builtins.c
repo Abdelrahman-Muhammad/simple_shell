@@ -11,7 +11,7 @@ void HANDLE_SIGNAL(int sig)
 }
 
 /**
- * HELP_ME - HK';/.,MMMM.,
+ * HELP_ME - HK';/.,MMMM.
  * @my_info: my_info ASTRUYKJ,MBNVVV
  * Return: SSYREYRTUYRRRRYT
 */
@@ -43,8 +43,8 @@ int HELP_ME(shell_my_info_t *my_info)
 }
 
 /**
- * CODE_ERR_GET - ASHGFJHGKBVN
- * @my_info: AAAWRET SAGNV,.VCBXZV
+ * CODE_ERR_GET - ASHGFJHGKBV
+ * @my_info: AAAWRET SAGNV,.VCBXZ
  * @eval: AFSAF AGDHFGMVBC
  * Return: SAFHFGH
  */
@@ -82,9 +82,9 @@ int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 }
 
 /**
- * BULT_FUNC_GT - builtin that pais the command in the arg
- * @cmd: command
- * Return: function pointer of the builtin command
+ * BULT_FUNC_GT - gdjghjghj
+ * @cmd: fghjfghjfghj
+ * Return: fgjgfhjfgjh
  */
 int (*BULT_FUNC_GT(char *cmd))(shell_my_info_t *)
 {
