@@ -15,7 +15,7 @@ char *ENV_VAR(const char *name, char **_env)
 	k = 0;
 	for (i = 0; _env[i]; i++)
 	{
-		k = compare_environement_variable_name(_env[i], name);
+		k = ENV_VAR_COMPA(_env[i], name);
 		if (k)
 		{
 			ptr_env = _env[i];

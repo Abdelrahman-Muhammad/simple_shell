@@ -11,11 +11,11 @@ void PAR_DIR(shell_my_info_t *my_info)
 
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, my_info);
+	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 	dir = my_info->args[1];
 	if (_strcmp(".", dir) == 0)
 	{
-		set_env("PWD", cp_pwd, my_info);
+		ENV_SETTER("PWD", cp_pwd, my_info);
 		free(cp_pwd);
 		return;
 	}
@@ -37,12 +37,12 @@ void PAR_DIR(shell_my_info_t *my_info)
 	if (cp_str_del_pwd != NULL)
 	{
 		chdir(cp_str_del_pwd);
-		set_env("PWD", cp_str_del_pwd, my_info);
+		ENV_SETTER("PWD", cp_str_del_pwd, my_info);
 	}
 	else
 	{
 		chdir("/");
-		set_env("PWD", "/", my_info);
+		ENV_SETTER("PWD", "/", my_info);
 	}
 	my_info->status = 0;
 	free(cp_pwd);
@@ -67,10 +67,10 @@ void SOME_DEST(shell_my_info_t *my_info)
 	}
 
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, my_info);
+	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 
 	cp_dir = _strdup(dir);
-	set_env("PWD", cp_dir, my_info);
+	ENV_SETTER("PWD", cp_dir, my_info);
 
 	free(cp_pwd);
 	free(cp_dir);
@@ -99,12 +99,12 @@ void PREV_DIC(shell_my_info_t *my_info)
 	else
 		cp_oldpwd = _strdup(p_oldpwd);
 
-	set_env("OLDPWD", cp_pwd, my_info);
+	ENV_SETTER("OLDPWD", cp_pwd, my_info);
 
 	if (chdir(cp_oldpwd) == -1)
-		set_env("PWD", cp_pwd, my_info);
+		ENV_SETTER("PWD", cp_pwd, my_info);
 	else
-		set_env("PWD", cp_oldpwd, my_info);
+		ENV_SETTER("PWD", cp_oldpwd, my_info);
 
 	p_pwd = ENV_VAR("PWD", my_info->_env);
 
@@ -136,7 +136,7 @@ void HOUSE_DIR(shell_my_info_t *my_info)
 
 	if (home == NULL)
 	{
-		set_env("OLDPWD", p_pwd, my_info);
+		ENV_SETTER("OLDPWD", p_pwd, my_info);
 		free(p_pwd);
 		return;
 	}
@@ -148,8 +148,8 @@ void HOUSE_DIR(shell_my_info_t *my_info)
 		return;
 	}
 
-	set_env("OLDPWD", p_pwd, my_info);
-	set_env("PWD", home, my_info);
+	ENV_SETTER("OLDPWD", p_pwd, my_info);
+	ENV_SETTER("PWD", home, my_info);
 	free(p_pwd);
 	my_info->status = 0;
 }

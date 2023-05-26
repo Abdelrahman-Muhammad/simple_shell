@@ -159,11 +159,11 @@ int check_cmd_err(char *dir, shell_my_info_t *my_info);
 int ENV_VAR_GET(shell_my_info_t *my_info);
 char *ENV_VAR(const char *name, char **_env);
 
-int _setenv(shell_my_info_t *my_info);
-int _unsetenv(shell_my_info_t *my_infosh);
-char *copy_info(char *name, char *value);
-void set_env(char *name, char *value, shell_my_info_t *my_info);
-int compare_environement_variable_name(const char *nenv, const char *name);
+int _SET_ENV(shell_my_info_t *my_info);
+int _DNTSETENV(shell_my_info_t *my_infosh);
+char *INF_CPY(char *name, char *value);
+void ENV_SETTER(char *name, char *value, shell_my_info_t *my_info);
+int ENV_VAR_COMPA(const char *nenv, const char *name);
 
 void SOME_DEST(shell_my_info_t *my_info);
 void PAR_DIR(shell_my_info_t *my_info);

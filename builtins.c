@@ -91,8 +91,8 @@ int (*BULT_FUNC_GT(char *cmd))(shell_my_info_t *)
 	builtin_t builtin[] = {
 		{ "env", ENV_VAR_GET },
 		{ "exit", close_my_shell },
-		{ "setenv", _setenv },
-		{ "unsetenv", _unsetenv },
+		{ "setenv", _SET_ENV },
+		{ "unsetenv", _DNTSETENV },
 		{ "cd", CURR_CHNG },
 		{ "help", HELP_ME },
 		{ NULL, NULL }
