@@ -57,7 +57,7 @@ int main(int ac, char **av)
 	shell_my_info_t my_info;
 	(void) ac;
 
-	signal(SIGINT, sign_int_handle);
+	signal(SIGINT, HANDLE_SIGNAL);
 	set_my_info(&my_info, av);
 	run_shell_loop(&my_info);
 	free_my_info(&my_info);

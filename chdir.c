@@ -62,7 +62,7 @@ void change_to_dir(shell_my_info_t *my_info)
 	dir = my_info->args[1];
 	if (chdir(dir) == -1)
 	{
-		err_code_generate(my_info, 2);
+		CODE_ERR_GET(my_info, 2);
 		return;
 	}
 
@@ -144,7 +144,7 @@ void change_to_home_dir(shell_my_info_t *my_info)
 
 	if (chdir(home) == -1)
 	{
-		err_code_generate(my_info, 2);
+		CODE_ERR_GET(my_info, 2);
 		free(p_pwd);
 		return;
 	}

@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * error_message_env - error message for env in ENV_VAR.
+ * error_message_env - ERR message for env in ENV_VAR.
  * @my_info: my_info relevant (counter, arguments)
- * Return: error message.
+ * Return: ERR message.
  */
 char *error_message_env(shell_my_info_t *my_info)
 {
 	int length;
-	char *error;
+	char *ERR;
 	char *ver_str;
 	char *msg;
 
@@ -16,55 +16,55 @@ char *error_message_env(shell_my_info_t *my_info)
 	msg = ": Unable to add/remove from environment\n";
 	length = _strlen(my_info->av[0]) + _strlen(ver_str);
 	length += _strlen(my_info->args[0]) + _strlen(msg) + 4;
-	error = malloc(sizeof(char) * (length + 1));
-	if (error == 0)
+	ERR = malloc(sizeof(char) * (length + 1));
+	if (ERR == 0)
 	{
-		free(error);
+		free(ERR);
 		free(ver_str);
 		return (NULL);
 	}
 
-	_strcpy(error, my_info->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, ver_str);
-	_strcat(error, ": ");
-	_strcat(error, my_info->args[0]);
-	_strcat(error, msg);
-	_strcat(error, "\0");
+	_strcpy(ERR, my_info->av[0]);
+	_strcat(ERR, ": ");
+	_strcat(ERR, ver_str);
+	_strcat(ERR, ": ");
+	_strcat(ERR, my_info->args[0]);
+	_strcat(ERR, msg);
+	_strcat(ERR, "\0");
 	free(ver_str);
 
-	return (error);
+	return (ERR);
 }
 /**
- * error_message_path_126 - error msg for path and failure denied permission.
+ * error_message_path_126 - ERR msg for path and failure denied permission.
  * @my_info: my_info relevant (counter, arguments).
- * Return: The error string.
+ * Return: The ERR string.
  */
 char *error_message_path_126(shell_my_info_t *my_info)
 {
 	int length;
 	char *ver_str;
-	char *error;
+	char *ERR;
 
 	ver_str = INT_STR_CONV(my_info->counter);
 	length = _strlen(my_info->av[0]) + _strlen(ver_str);
 	length += _strlen(my_info->args[0]) + 24;
-	error = malloc(sizeof(char) * (length + 1));
-	if (error == 0)
+	ERR = malloc(sizeof(char) * (length + 1));
+	if (ERR == 0)
 	{
-		free(error);
+		free(ERR);
 		free(ver_str);
 		return (NULL);
 	}
-	_strcpy(error, my_info->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, ver_str);
-	_strcat(error, ": ");
-	_strcat(error, my_info->args[0]);
-	_strcat(error, ": Permission denied\n");
-	_strcat(error, "\0");
+	_strcpy(ERR, my_info->av[0]);
+	_strcat(ERR, ": ");
+	_strcat(ERR, ver_str);
+	_strcat(ERR, ": ");
+	_strcat(ERR, my_info->args[0]);
+	_strcat(ERR, ": Permission denied\n");
+	_strcat(ERR, "\0");
 	free(ver_str);
-	return (error);
+	return (ERR);
 }
 
 /**

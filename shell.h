@@ -193,9 +193,9 @@ void print_help(void);
 void print_help_cd(void);
 void print_help_alias(void);
 
-void sign_int_handle(int sig);
-int req_help(shell_my_info_t *my_info);
-int err_code_generate(shell_my_info_t *my_info, int eval);
+void HANDLE_SIGNAL(int sig);
+int HELP_ME(shell_my_info_t *my_info);
+int CODE_ERR_GET(shell_my_info_t *my_info, int eval);
 int (*get_builtin_function(char *cmd))(shell_my_info_t *my_info);
 
 int close_my_shell(shell_my_info_t *my_info);

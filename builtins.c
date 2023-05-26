@@ -1,21 +1,21 @@
 #include "shell.h"
 
 /**
- * sign_int_handle - Handle the crtl + c call in prompt
- * @sig: Signal handler
+ * HANDLE_SIGNAL - HASFSDF C
+ * @sig: SSSSFDSF
  */
-void sign_int_handle(int sig)
+void HANDLE_SIGNAL(int sig)
 {
 	(void)sig;
 	write(STDOUT_FILENO, "\n^-^ ", 5);
 }
 
 /**
- * req_help - function that retrieves help messages according builtin
- * @my_info: my_info structure (args and input)
- * Return: Return 0
+ * HELP_ME - HK';/.,MMMM.,
+ * @my_info: my_info ASTRUYKJ,MBNVVV
+ * Return: SSYREYRTUYRRRRYT
 */
-int req_help(shell_my_info_t *my_info)
+int HELP_ME(shell_my_info_t *my_info)
 {
 
 	if (my_info->args[1] == 0)
@@ -43,38 +43,38 @@ int req_help(shell_my_info_t *my_info)
 }
 
 /**
- * err_code_generate - calls the error according the builtin, syntax or permission
- * @my_info: my_info structure that contains arguments
- * @eval: error value
- * Return: error
+ * CODE_ERR_GET - ASHGFJHGKBVN
+ * @my_info: AAAWRET SAGNV,.VCBXZV
+ * @eval: AFSAF AGDHFGMVBC
+ * Return: SAFHFGH
  */
-int err_code_generate(shell_my_info_t *my_info, int eval)
+int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 {
-	char *error;
+	char *ERR;
 
 	switch (eval)
 	{
 	case -1:
-		error = error_message_env(my_info);
+		ERR = error_message_env(my_info);
 		break;
 	case 126:
-		error = error_message_path_126(my_info);
+		ERR = error_message_path_126(my_info);
 		break;
 	case 127:
-		error = error_message_not_found(my_info);
+		ERR = error_message_not_found(my_info);
 		break;
 	case 2:
 		if (_strcmp("exit", my_info->args[0]) == 0)
-			error = error_message_exit_shell(my_info);
+			ERR = error_message_exit_shell(my_info);
 		else if (_strcmp("cd", my_info->args[0]) == 0)
-			error = error_message_get_cd(my_info);
+			ERR = error_message_get_cd(my_info);
 		break;
 	}
 
-	if (error)
+	if (ERR)
 	{
-		write(STDERR_FILENO, error, _strlen(error));
-		free(error);
+		write(STDERR_FILENO, ERR, _strlen(ERR));
+		free(ERR);
 	}
 
 	my_info->status = eval;
@@ -94,7 +94,7 @@ int (*get_builtin_function(char *cmd))(shell_my_info_t *)
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
 		{ "cd", change_directory_shell },
-		{ "help", req_help },
+		{ "help", HELP_ME },
 		{ NULL, NULL }
 	};
 	int i;
@@ -128,7 +128,7 @@ int close_my_shell(shell_my_info_t *my_info)
 		big_number = ustatus > (unsigned int)INT_MAX;
 		if (!is_digit || str_len > 10 || big_number)
 		{
-			err_code_generate(my_info, 2);
+			CODE_ERR_GET(my_info, 2);
 			my_info->status = 2;
 			return (1);
 		}

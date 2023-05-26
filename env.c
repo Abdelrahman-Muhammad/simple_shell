@@ -90,7 +90,7 @@ int _setenv(shell_my_info_t *my_info)
 
 	if (my_info->args[1] == NULL || my_info->args[2] == NULL)
 	{
-		err_code_generate(my_info, -1);
+		CODE_ERR_GET(my_info, -1);
 		return (1);
 	}
 
@@ -112,7 +112,7 @@ int _unsetenv(shell_my_info_t *my_info)
 
 	if (my_info->args[1] == NULL)
 	{
-		err_code_generate(my_info, -1);
+		CODE_ERR_GET(my_info, -1);
 		return (1);
 	}
 	k = -1;
@@ -128,7 +128,7 @@ int _unsetenv(shell_my_info_t *my_info)
 	}
 	if (k == -1)
 	{
-		err_code_generate(my_info, -1);
+		CODE_ERR_GET(my_info, -1);
 		return (1);
 	}
 	realloc_env = malloc(sizeof(char *) * (i));

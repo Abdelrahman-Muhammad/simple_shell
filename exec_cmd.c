@@ -112,7 +112,7 @@ int cmd_exec(shell_my_info_t *my_info)
 	{
 		return (i);
 	}
-	err_code_generate(my_info, 127);
+	CODE_ERR_GET(my_info, 127);
 	return (-1);
 }
 
@@ -121,13 +121,13 @@ int cmd_exec(shell_my_info_t *my_info)
  *				has permissions to access
  * @dir: destination directory
  * @my_info: my_info structure
- * Return: 1 if there is an error, 0 if not
+ * Return: 1 if there is an ERR, 0 if not
  */
 int check_cmd_err(char *dir, shell_my_info_t *my_info)
 {
 	if (dir == NULL)
 	{
-		err_code_generate(my_info, 127);
+		CODE_ERR_GET(my_info, 127);
 		return (1);
 	}
 
@@ -135,7 +135,7 @@ int check_cmd_err(char *dir, shell_my_info_t *my_info)
 	{
 		if (access(dir, X_OK) == -1)
 		{
-			err_code_generate(my_info, 126);
+			CODE_ERR_GET(my_info, 126);
 			free(dir);
 			return (1);
 		}
@@ -145,7 +145,7 @@ int check_cmd_err(char *dir, shell_my_info_t *my_info)
 	{
 		if (access(my_info->args[0], X_OK) == -1)
 		{
-			err_code_generate(my_info, 126);
+			CODE_ERR_GET(my_info, 126);
 			return (1);
 		}
 	}

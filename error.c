@@ -23,7 +23,7 @@ int check_rep(char *input, int i)
  * @input: input string
  * @i: index
  * @last: last character read
- * Return: index of error. 0 when there are no errors
+ * Return: index of ERR. 0 when there are no errors
  */
 int check_err(char *input, int i, char last)
 {
@@ -69,7 +69,7 @@ int check_err(char *input, int i, char last)
  * check_first_char - this function finds the index of the first char
  * @input: input string
  * @i: index
- * Return: 1 if there is an error. 0 in other case.
+ * Return: 1 if there is an ERR. 0 in other case.
  */
 int check_first_char(char *input, int *i)
 {
@@ -92,15 +92,15 @@ int check_first_char(char *input, int *i)
 }
 
 /**
- * print_syntax_err - this function prints when a syntax error is found
+ * print_syntax_err - this function prints when a syntax ERR is found
  * @my_info: my_info structure
  * @input: input string
- * @i: index of the error
- * @bool: to control msg error
+ * @i: index of the ERR
+ * @bool: to control msg ERR
  */
 void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
 {
-	char *msg, *msg2, *msg3, *error, *counter;
+	char *msg, *msg2, *msg3, *ERR, *counter;
 	int length;
 
 	if (input[i] == ';')
@@ -116,37 +116,37 @@ void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
 	if (input[i] == '&')
 		msg = (input[i + 1] == '&' ? "&&" : "&");
 
-	msg2 = ": Syntax error: \"";
+	msg2 = ": Syntax ERR: \"";
 	msg3 = "\" unexpected\n";
 	counter = INT_STR_CONV(my_info->counter);
 	length = _strlen(my_info->av[0]) + _strlen(counter) + _strlen(msg) +
 		_strlen(msg2) + _strlen(msg3) + 3;
 
-	error = malloc(sizeof(char) * (length));
-	if (error == NULL)
+	ERR = malloc(sizeof(char) * (length));
+	if (ERR == NULL)
 	{
 		free(counter);
 		return;
 	}
-	_strcpy(error, my_info->av[0]);
-	_strcat(error, ": ");
-	_strcat(error, counter);
-	_strcat(error, msg2);
-	_strcat(error, msg);
-	_strcat(error, msg3);
-	_strcat(error, "\0");
-	error[length - 1] = '\0';
+	_strcpy(ERR, my_info->av[0]);
+	_strcat(ERR, ": ");
+	_strcat(ERR, counter);
+	_strcat(ERR, msg2);
+	_strcat(ERR, msg);
+	_strcat(ERR, msg3);
+	_strcat(ERR, "\0");
+	ERR[length - 1] = '\0';
 
-	write(STDERR_FILENO, error, length - 1);
-	free(error);
+	write(STDERR_FILENO, ERR, length - 1);
+	free(ERR);
 	free(counter);
 }
 
 /**
- * check_syntax_err - this function finds and prints a syntax error
+ * check_syntax_err - this function finds and prints a syntax ERR
  * @my_info: my_info structure
  * @input: input string
- * Return: 1 if there is an error. 0 in other case
+ * Return: 1 if there is an ERR. 0 in other case
  */
 int check_syntax_err(shell_my_info_t *my_info, char *input)
 {

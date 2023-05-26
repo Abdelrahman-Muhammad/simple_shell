@@ -162,7 +162,7 @@ char **split_input(char *input)
 	tokens = malloc(sizeof(char *) * (bufsize));
 	if (tokens == NULL)
 	{
-		write(STDERR_FILENO, ": allocation error\n", 18);
+		write(STDERR_FILENO, ": allocation ERR\n", 18);
 		exit(EXIT_FAILURE);
 	}
 
@@ -177,7 +177,7 @@ char **split_input(char *input)
 			tokens = _reallocdp(tokens, i, sizeof(char *) * bufsize);
 			if (tokens == NULL)
 			{
-				write(STDERR_FILENO, ": allocation error\n", 18);
+				write(STDERR_FILENO, ": allocation ERR\n", 18);
 				exit(EXIT_FAILURE);
 			}
 		}
