@@ -158,7 +158,7 @@ void MAIN_APP(shell_my_info_t *my_info)
 			}
 			input = CHNAG_THEM(input, my_info);
 			loop = DIVIDE_ITOP(my_info, input);
-			my_info->counter++;
+			my_info->ADDAD++;
 		}
 		else
 		{

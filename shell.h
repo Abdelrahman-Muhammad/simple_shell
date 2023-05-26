@@ -19,7 +19,7 @@
 /**
  * struct shell_my_info - ZZZZZZZZZZZZZZZZZZZZ
  * @CUURENT: ZZZZZZZZZZZZZZZZZ
- * @counter: ZZZZZZZZZZZZZZ
+ * @ADDAD: ZZZZZZZZZZZZZZ
  * @pid: ZZZZZZZZZZZZZZZZZ
  * @av: ZZZZZZZZZZZZZZZZZ
  * @input: ZZZZZZZZZZZZZZZZZ
@@ -29,7 +29,7 @@
 typedef struct shell_my_info
 {
 	int CUURENT;
-	int counter;
+	int ADDAD;
 	char *pid;
 	char **av;
 	char *input;
@@ -39,12 +39,12 @@ typedef struct shell_my_info
 
 /**
  * struct separator_list_s - ZZZZZZZZZZZZZZZZZZZZZZZZ
- * @separator: ZZZZZZZZZZZZZZ
+ * @DIVIDE: ZZZZZZZZZZZZZZ
  * @next: ZZZZZZZZZZZZZZZZZ
  */
 typedef struct separator_list_s
 {
-	char separator;
+	char DIVIDE;
 	struct separator_list_s *next;
 } separator_list_t;
 
@@ -123,7 +123,6 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool);
 char *TNMC_MER(char *in);
 void MAIN_APP(shell_my_info_t *my_info);
 
-/* split.c */
 char **split_input(char *input);
 char *REVERP_IT(char *input, int bool);
 int DIVIDE_ITOP(shell_my_info_t *my_info, char *input);

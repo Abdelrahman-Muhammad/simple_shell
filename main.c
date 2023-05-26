@@ -30,7 +30,7 @@ void I_WANT_THESE(shell_my_info_t *my_info, char **av)
 	my_info->input = NULL;
 	my_info->args = NULL;
 	my_info->CUURENT = 0;
-	my_info->counter = 1;
+	my_info->ADDAD = 1;
 
 	for (i = 0; environ[i]; i++)
 		;

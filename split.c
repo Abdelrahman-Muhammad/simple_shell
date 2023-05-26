@@ -92,16 +92,16 @@ void COMIN_GET(
 	{
 		if (my_infosh->CUURENT == 0)
 		{
-			if (ls_s->separator == '&' || ls_s->separator == ';')
+			if (ls_s->DIVIDE == '&' || ls_s->DIVIDE == ';')
 				loop_sep = 0;
-			if (ls_s->separator == '|')
+			if (ls_s->DIVIDE == '|')
 				ls_l = ls_l->next, ls_s = ls_s->next;
 		}
 		else
 		{
-			if (ls_s->separator == '|' || ls_s->separator == ';')
+			if (ls_s->DIVIDE == '|' || ls_s->DIVIDE == ';')
 				loop_sep = 0;
-			if (ls_s->separator == '&')
+			if (ls_s->DIVIDE == '&')
 				ls_l = ls_l->next, ls_s = ls_s->next;
 		}
 		if (ls_s != NULL && !loop_sep)

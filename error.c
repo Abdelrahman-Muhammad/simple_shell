@@ -100,7 +100,7 @@ int ONE_CHAR(char *input, int *i)
  */
 void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 {
-	char *msg, *msg2, *msg3, *ERR, *counter;
+	char *msg, *msg2, *msg3, *ERR, *ADDAD;
 	int length;
 
 	if (input[i] == ';')
@@ -118,19 +118,19 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 
 	msg2 = ": Syntax ERR: \"";
 	msg3 = "\" unexpected\n";
-	counter = INT_STR_CONV(my_info->counter);
-	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(counter) + MEAUSE_IT(msg) +
+	ADDAD = INT_STR_CONV(my_info->ADDAD);
+	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ADDAD) + MEAUSE_IT(msg) +
 		MEAUSE_IT(msg2) + MEAUSE_IT(msg3) + 3;
 
 	ERR = malloc(sizeof(char) * (length));
 	if (ERR == NULL)
 	{
-		free(counter);
+		free(ADDAD);
 		return;
 	}
 	OLDANOONE(ERR, my_info->av[0]);
 	OLDONE(ERR, ": ");
-	OLDONE(ERR, counter);
+	OLDONE(ERR, ADDAD);
 	OLDONE(ERR, msg2);
 	OLDONE(ERR, msg);
 	OLDONE(ERR, msg3);
@@ -139,7 +139,7 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 
 	write(STDERR_FILENO, ERR, length - 1);
 	free(ERR);
-	free(counter);
+	free(ADDAD);
 }
 
 /**

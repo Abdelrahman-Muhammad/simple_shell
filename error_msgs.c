@@ -48,7 +48,7 @@ char *ERR_CDD(shell_my_info_t *my_info)
 	int length, len_id;
 	char *ERR, *ver_str, *msg;
 
-	ver_str = INT_STR_CONV(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->ADDAD);
 	if (my_info->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
@@ -88,7 +88,7 @@ char *N_T_FONDE(shell_my_info_t *my_info)
 	char *ERR;
 	char *ver_str;
 
-	ver_str = INT_STR_CONV(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->ADDAD);
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + 16;
 	ERR = malloc(sizeof(char) * (length + 1));
@@ -120,7 +120,7 @@ char *EXX_ERR(shell_my_info_t *my_info)
 	char *ERR;
 	char *ver_str;
 
-	ver_str = INT_STR_CONV(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->ADDAD);
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + MEAUSE_IT(my_info->args[1]) + 23;
 	ERR = malloc(sizeof(char) * (length + 1));

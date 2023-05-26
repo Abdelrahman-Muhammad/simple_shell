@@ -12,7 +12,7 @@ char *ERR_MSG_ENV(shell_my_info_t *my_info)
 	char *ver_str;
 	char *msg;
 
-	ver_str = INT_STR_CONV(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->ADDAD);
 	msg = ": Unable to add/remove from environment\n";
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + MEAUSE_IT(msg) + 4;
@@ -46,7 +46,7 @@ char *ERR_126(shell_my_info_t *my_info)
 	char *ver_str;
 	char *ERR;
 
-	ver_str = INT_STR_CONV(my_info->counter);
+	ver_str = INT_STR_CONV(my_info->ADDAD);
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + 24;
 	ERR = malloc(sizeof(char) * (length + 1));

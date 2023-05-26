@@ -14,7 +14,7 @@ separator_list_t *FINISH_T(separator_list_t **head, char sep)
 	if (new_node == NULL)
 		return (NULL);
 
-	new_node->separator = sep;
+	new_node->DIVIDE = sep;
 	new_node->next = NULL;
 
 	if (temp_node == NULL)
