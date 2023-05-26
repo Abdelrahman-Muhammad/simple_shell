@@ -101,20 +101,20 @@ char *read_input_line(int *i_eof)
 
 /**
  * execute_input_line - finds builtins and commands
- * @data: data relevant (args)
+ * @my_info: my_info relevant (args)
  * Return: 1 on success.
  */
-int execute_input_line(shell_data_t *data)
+int execute_input_line(shell_my_info_t *my_info)
 {
-	int (*builtin)(shell_data_t *data);
+	int (*builtin)(shell_my_info_t *my_info);
 
-	if (data->args[0] == NULL)
+	if (my_info->args[0] == NULL)
 		return (1);
 
-	builtin = get_builtin_function(data->args[0]);
+	builtin = get_builtin_function(my_info->args[0]);
 
 	if (builtin != NULL)
-		return (builtin(data));
+		return (builtin(my_info));
 
-	return (exec_cmmd(data));
+	return (exec_cmmd(my_info));
 }

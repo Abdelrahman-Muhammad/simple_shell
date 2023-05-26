@@ -5,13 +5,13 @@
  *					if the typed variable is an env variable
  * @h: pointer to head of linked list
  * @in: pointer to input string
- * @data: data structure
+ * @my_info: my_info structure
  */
 void check_for_environment_variables(
-		replacement_variable_t **h, char *in, shell_data_t *data)
+		replacement_variable_t **h, char *in, shell_my_info_t *my_info)
 {
 	int row, chr, j, lval;
-	char **_envr = data->_env;
+	char **_envr = my_info->_env;
 
 	for (row = 0; _envr[row]; row++)
 	{
@@ -43,13 +43,13 @@ void check_for_environment_variables(
  * @h: head of the linked list
  * @in: input string
  * @st: last status of the Shell
- * @data: data structure
+ * @my_info: my_info structure
  * Return: returns an integer
  */
 int replace_variables(
-		replacement_variable_t **h, char *in, char *st, shell_data_t *data)
+		replacement_variable_t **h, char *in, char *st, shell_my_info_t *my_info)
 {
-	int i, lst = _strlen(st), lpd = _strlen(data->pid);
+	int i, lst = _strlen(st), lpd = _strlen(my_info->pid);
 
 	for (i = 0; in[i]; i++)
 	{
@@ -58,7 +58,7 @@ int replace_variables(
 			if (in[i + 1] == '?')
 				add_replacement_variable_node(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_replacement_variable_node(h, 2, data->pid, lpd), i++;
+				add_replacement_variable_node(h, 2, my_info->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
 				add_replacement_variable_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
@@ -70,7 +70,7 @@ int replace_variables(
 			else if (in[i + 1] == ';')
 				add_replacement_variable_node(h, 0, NULL, 0);
 			else
-				check_for_environment_variables(h, in + i, data);
+				check_for_environment_variables(h, in + i, my_info);
 		}
 	}
 	return (i);
@@ -129,19 +129,19 @@ char *get_replaced_input(
 /**
  * *replace_variable - function calls functions to replace string into vars
  * @input: input string
- * @datash: data structure
+ * @my_infosh: my_info structure
  * Return: replaced string
  */
-char *replace_variable(char *input, shell_data_t *datash)
+char *replace_variable(char *input, shell_my_info_t *my_infosh)
 {
 	replacement_variable_t *head, *index;
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = int_to_string(datash->status);
+	status = int_to_string(my_infosh->status);
 	head = NULL;
 
-	olen = replace_variables(&head, input, status, datash);
+	olen = replace_variables(&head, input, status, my_infosh);
 
 	if (head == NULL)
 	{

@@ -93,12 +93,12 @@ int check_first_char(char *input, int *i)
 
 /**
  * print_syntax_err - this function prints when a syntax error is found
- * @data: data structure
+ * @my_info: my_info structure
  * @input: input string
  * @i: index of the error
  * @bool: to control msg error
  */
-void print_syntax_err(shell_data_t *data, char *input, int i, int bool)
+void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
 {
 	char *msg, *msg2, *msg3, *error, *counter;
 	int length;
@@ -118,8 +118,8 @@ void print_syntax_err(shell_data_t *data, char *input, int i, int bool)
 
 	msg2 = ": Syntax error: \"";
 	msg3 = "\" unexpected\n";
-	counter = int_to_string(data->counter);
-	length = _strlen(data->av[0]) + _strlen(counter) + _strlen(msg) +
+	counter = int_to_string(my_info->counter);
+	length = _strlen(my_info->av[0]) + _strlen(counter) + _strlen(msg) +
 		_strlen(msg2) + _strlen(msg3) + 3;
 
 	error = malloc(sizeof(char) * (length));
@@ -128,7 +128,7 @@ void print_syntax_err(shell_data_t *data, char *input, int i, int bool)
 		free(counter);
 		return;
 	}
-	_strcpy(error, data->av[0]);
+	_strcpy(error, my_info->av[0]);
 	_strcat(error, ": ");
 	_strcat(error, counter);
 	_strcat(error, msg2);
@@ -144,24 +144,24 @@ void print_syntax_err(shell_data_t *data, char *input, int i, int bool)
 
 /**
  * check_syntax_err - this function finds and prints a syntax error
- * @data: data structure
+ * @my_info: my_info structure
  * @input: input string
  * Return: 1 if there is an error. 0 in other case
  */
-int check_syntax_err(shell_data_t *data, char *input)
+int check_syntax_err(shell_my_info_t *my_info, char *input)
 {
 	int begin = 0, f_char = 0, error_pos = 0;
 
 	f_char = check_first_char(input, &begin);
 	if (f_char == -1)
 	{
-		print_syntax_err(data, input, begin, 0);
+		print_syntax_err(my_info, input, begin, 0);
 		return (1);
 	}
 	error_pos = check_err(input + begin, 0, input[begin]);
 	if (error_pos != 0)
 	{
-		print_syntax_err(data, input, begin + error_pos, 1);
+		print_syntax_err(my_info, input, begin + error_pos, 1);
 		return (1);
 	}
 	return (0);

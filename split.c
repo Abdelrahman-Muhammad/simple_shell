@@ -79,10 +79,10 @@ void add_nodes(
  * get_next - this function moves to the next stored command line
  * @list_s: separatorlist
  * @list_l: command line list
- * @datash: data structure pointer
+ * @my_infosh: my_info structure pointer
  */
 void get_next(
-		separator_list_t **list_s, command_list_t **list_l, shell_data_t *datash)
+		separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh)
 {
 	int loop_sep = 1;
 	separator_list_t *ls_s = *list_s;
@@ -90,7 +90,7 @@ void get_next(
 
 	while (ls_s != NULL && loop_sep)
 	{
-		if (datash->status == 0)
+		if (my_infosh->status == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;
@@ -113,11 +113,11 @@ void get_next(
 /**
  * split_cmd_op - splits command lines according to
  *				the separators ;, | and &, and executes them
- * @data: data structure
+ * @my_info: my_info structure
  * @input: input string
  * Return: 0 to exit, 1 to continue
  */
-int split_cmd_op(shell_data_t *data, char *input)
+int split_cmd_op(shell_my_info_t *my_info, char *input)
 {
 	int loop;
 	separator_list_t *list_s, *head_s = NULL;
@@ -130,15 +130,15 @@ int split_cmd_op(shell_data_t *data, char *input)
 
 	while (list_l != NULL)
 	{
-		data->input = list_l->line;
-		data->args = split_input(data->input);
-		loop = execute_input_line(data);
-		free(data->args);
+		my_info->input = list_l->line;
+		my_info->args = split_input(my_info->input);
+		loop = execute_input_line(my_info);
+		free(my_info->args);
 
 		if (loop == 0)
 			break;
 
-		get_next(&list_s, &list_l, data);
+		get_next(&list_s, &list_l, my_info);
 
 		if (list_l != NULL)
 			list_l = list_l->next;

@@ -139,9 +139,9 @@ char *rem_cmnt(char *in)
 
 /**
  * run_shell_loop - this function runs the shell loop
- * @data: relevant data (av, input, args)
+ * @my_info: relevant my_info (av, input, args)
  */
-void run_shell_loop(shell_data_t *data)
+void run_shell_loop(shell_my_info_t *my_info)
 {
 	char *input;
 	int loop = 1, i_eof;
@@ -156,14 +156,14 @@ void run_shell_loop(shell_data_t *data)
 			if (input == NULL)
 				continue;
 
-			if (check_syntax_err(data, input))
+			if (check_syntax_err(my_info, input))
 			{
-				data->status = 2;
+				my_info->status = 2;
 				continue;
 			}
-			input = replace_variable(input, data);
-			loop = split_cmd_op(data, input);
-			data->counter++;
+			input = replace_variable(input, my_info);
+			loop = split_cmd_op(my_info, input);
+			my_info->counter++;
 		}
 		else
 		{

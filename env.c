@@ -52,75 +52,75 @@ char *copy_info(char *name, char *value)
  * set_env - sets an environment variable
  * @name: name of the environment variable
  * @value: value of the environment variable
- * @data: data structure (environ)
+ * @my_info: my_info structure (environ)
  * Return: no return
  */
-void set_env(char *name, char *value, shell_data_t *data)
+void set_env(char *name, char *value, shell_my_info_t *my_info)
 {
 	int i;
 	char *var_env, *name_env;
 
-	for (i = 0; data->_env[i]; i++)
+	for (i = 0; my_info->_env[i]; i++)
 	{
-		var_env = _strdup(data->_env[i]);
+		var_env = _strdup(my_info->_env[i]);
 		name_env = _str_del(var_env, "=");
 		if (_strcmp(name_env, name) == 0)
 		{
-			free(data->_env[i]);
-			data->_env[i] = copy_info(name_env, value);
+			free(my_info->_env[i]);
+			my_info->_env[i] = copy_info(name_env, value);
 			free(var_env);
 			return;
 		}
 		free(var_env);
 	}
 
-	data->_env = _reallocdp(data->_env, i, sizeof(char *) * (i + 2));
-	data->_env[i] = copy_info(name, value);
-	data->_env[i + 1] = NULL;
+	my_info->_env = _reallocdp(my_info->_env, i, sizeof(char *) * (i + 2));
+	my_info->_env[i] = copy_info(name, value);
+	my_info->_env[i + 1] = NULL;
 }
 
 /**
  * _setenv - compares env variables names
  * with the name passed.
- * @data: data relevant (env name and env value)
+ * @my_info: my_info relevant (env name and env value)
  * Return: 1 on success.
  */
-int _setenv(shell_data_t *data)
+int _setenv(shell_my_info_t *my_info)
 {
 
-	if (data->args[1] == NULL || data->args[2] == NULL)
+	if (my_info->args[1] == NULL || my_info->args[2] == NULL)
 	{
-		get_error_code(data, -1);
+		err_code_generate(my_info, -1);
 		return (1);
 	}
 
-	set_env(data->args[1], data->args[2], data);
+	set_env(my_info->args[1], my_info->args[2], my_info);
 
 	return (1);
 }
 
 /**
  * _unsetenv - deletes a environment variable
- * @data: data relevant (env name)
+ * @my_info: my_info relevant (env name)
  * Return: 1 on success.
  */
-int _unsetenv(shell_data_t *data)
+int _unsetenv(shell_my_info_t *my_info)
 {
 	char **realloc_env;
 	char *var_env, *name_env;
 	int i, j, k;
 
-	if (data->args[1] == NULL)
+	if (my_info->args[1] == NULL)
 	{
-		get_error_code(data, -1);
+		err_code_generate(my_info, -1);
 		return (1);
 	}
 	k = -1;
-	for (i = 0; data->_env[i]; i++)
+	for (i = 0; my_info->_env[i]; i++)
 	{
-		var_env = _strdup(data->_env[i]);
+		var_env = _strdup(my_info->_env[i]);
 		name_env = _str_del(var_env, "=");
-		if (_strcmp(name_env, data->args[1]) == 0)
+		if (_strcmp(name_env, my_info->args[1]) == 0)
 		{
 			k = i;
 		}
@@ -128,21 +128,21 @@ int _unsetenv(shell_data_t *data)
 	}
 	if (k == -1)
 	{
-		get_error_code(data, -1);
+		err_code_generate(my_info, -1);
 		return (1);
 	}
 	realloc_env = malloc(sizeof(char *) * (i));
-	for (i = j = 0; data->_env[i]; i++)
+	for (i = j = 0; my_info->_env[i]; i++)
 	{
 		if (i != k)
 		{
-			realloc_env[j] = data->_env[i];
+			realloc_env[j] = my_info->_env[i];
 			j++;
 		}
 	}
 	realloc_env[j] = NULL;
-	free(data->_env[k]);
-	free(data->_env);
-	data->_env = realloc_env;
+	free(my_info->_env[k]);
+	free(my_info->_env);
+	my_info->_env = realloc_env;
 	return (1);
 }

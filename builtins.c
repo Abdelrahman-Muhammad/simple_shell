@@ -1,73 +1,73 @@
 #include "shell.h"
 
 /**
- * handle_sigint - Handle the crtl + c call in prompt
+ * sign_int_handle - Handle the crtl + c call in prompt
  * @sig: Signal handler
  */
-void handle_sigint(int sig)
+void sign_int_handle(int sig)
 {
 	(void)sig;
 	write(STDOUT_FILENO, "\n^-^ ", 5);
 }
 
 /**
- * get_help - function that retrieves help messages according builtin
- * @data: data structure (args and input)
+ * req_help - function that retrieves help messages according builtin
+ * @my_info: my_info structure (args and input)
  * Return: Return 0
 */
-int get_help(shell_data_t *data)
+int req_help(shell_my_info_t *my_info)
 {
 
-	if (data->args[1] == 0)
+	if (my_info->args[1] == 0)
 		print_help_general();
-	else if (_strcmp(data->args[1], "setenv") == 0)
+	else if (_strcmp(my_info->args[1], "setenv") == 0)
 		print_help_setenv();
-	else if (_strcmp(data->args[1], "env") == 0)
+	else if (_strcmp(my_info->args[1], "env") == 0)
 		print_help_env();
-	else if (_strcmp(data->args[1], "unsetenv") == 0)
+	else if (_strcmp(my_info->args[1], "unsetenv") == 0)
 		print_help_unsetenv();
-	else if (_strcmp(data->args[1], "help") == 0)
+	else if (_strcmp(my_info->args[1], "help") == 0)
 		print_help();
-	else if (_strcmp(data->args[1], "exit") == 0)
+	else if (_strcmp(my_info->args[1], "exit") == 0)
 		print_help_exit();
-	else if (_strcmp(data->args[1], "cd") == 0)
+	else if (_strcmp(my_info->args[1], "cd") == 0)
 		print_help_cd();
-	else if (_strcmp(data->args[1], "alias") == 0)
+	else if (_strcmp(my_info->args[1], "alias") == 0)
 		print_help_alias();
 	else
-		write(STDERR_FILENO, data->args[0],
-		      _strlen(data->args[0]));
+		write(STDERR_FILENO, my_info->args[0],
+		      _strlen(my_info->args[0]));
 
-	data->status = 0;
+	my_info->status = 0;
 	return (1);
 }
 
 /**
- * get_error_code - calls the error according the builtin, syntax or permission
- * @data: data structure that contains arguments
+ * err_code_generate - calls the error according the builtin, syntax or permission
+ * @my_info: my_info structure that contains arguments
  * @eval: error value
  * Return: error
  */
-int get_error_code(shell_data_t *data, int eval)
+int err_code_generate(shell_my_info_t *my_info, int eval)
 {
 	char *error;
 
 	switch (eval)
 	{
 	case -1:
-		error = error_message_env(data);
+		error = error_message_env(my_info);
 		break;
 	case 126:
-		error = error_message_path_126(data);
+		error = error_message_path_126(my_info);
 		break;
 	case 127:
-		error = error_message_not_found(data);
+		error = error_message_not_found(my_info);
 		break;
 	case 2:
-		if (_strcmp("exit", data->args[0]) == 0)
-			error = error_message_exit_shell(data);
-		else if (_strcmp("cd", data->args[0]) == 0)
-			error = error_message_get_cd(data);
+		if (_strcmp("exit", my_info->args[0]) == 0)
+			error = error_message_exit_shell(my_info);
+		else if (_strcmp("cd", my_info->args[0]) == 0)
+			error = error_message_get_cd(my_info);
 		break;
 	}
 
@@ -77,7 +77,7 @@ int get_error_code(shell_data_t *data, int eval)
 		free(error);
 	}
 
-	data->status = eval;
+	my_info->status = eval;
 	return (eval);
 }
 
@@ -86,15 +86,15 @@ int get_error_code(shell_data_t *data, int eval)
  * @cmd: command
  * Return: function pointer of the builtin command
  */
-int (*get_builtin_function(char *cmd))(shell_data_t *)
+int (*get_builtin_function(char *cmd))(shell_my_info_t *)
 {
 	builtin_t builtin[] = {
 		{ "env", print_env_var },
-		{ "exit", exit_shell_program },
+		{ "exit", close_my_shell },
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
 		{ "cd", change_directory_shell },
-		{ "help", get_help },
+		{ "help", req_help },
 		{ NULL, NULL }
 	};
 	int i;
@@ -109,30 +109,30 @@ int (*get_builtin_function(char *cmd))(shell_data_t *)
 }
 
 /**
- * exit_shell_program - exits the shell
- * @data: data relevant (status and args)
- * Return: 0 on success.
+ * close_my_shell - abdo function to cloose shell
+ * @my_info: tha args
+ * Return: 0 when success
  */
-int exit_shell_program(shell_data_t *data)
+int close_my_shell(shell_my_info_t *my_info)
 {
 	unsigned int ustatus;
 	int is_digit;
 	int str_len;
 	int big_number;
 
-	if (data->args[1] != NULL)
+	if (my_info->args[1] != NULL)
 	{
-		ustatus = str_to_int(data->args[1]);
-		is_digit = _isdigit(data->args[1]);
-		str_len = _strlen(data->args[1]);
+		ustatus = str_to_int(my_info->args[1]);
+		is_digit = _isdigit(my_info->args[1]);
+		str_len = _strlen(my_info->args[1]);
 		big_number = ustatus > (unsigned int)INT_MAX;
 		if (!is_digit || str_len > 10 || big_number)
 		{
-			get_error_code(data, 2);
-			data->status = 2;
+			err_code_generate(my_info, 2);
+			my_info->status = 2;
 			return (1);
 		}
-		data->status = (ustatus % 256);
+		my_info->status = (ustatus % 256);
 	}
 	return (0);
 }

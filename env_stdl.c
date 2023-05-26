@@ -31,23 +31,23 @@ char *get_env(const char *name, char **_env)
 
 /**
  * print_env_var - prints the evironment variables
- * @data: data relevant.
+ * @my_info: my_info relevant.
  * Return: 1 on success.
  */
-int print_env_var(shell_data_t *data)
+int print_env_var(shell_my_info_t *my_info)
 {
 	int i, j;
 
-	for (i = 0; data->_env[i]; i++)
+	for (i = 0; my_info->_env[i]; i++)
 	{
 
-		for (j = 0; data->_env[i][j]; j++)
+		for (j = 0; my_info->_env[i][j]; j++)
 			;
 
-		write(STDOUT_FILENO, data->_env[i], j);
+		write(STDOUT_FILENO, my_info->_env[i], j);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	data->status = 0;
+	my_info->status = 0;
 
 	return (1);
 }

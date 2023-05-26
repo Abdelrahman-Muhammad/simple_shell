@@ -1,49 +1,49 @@
 #include "shell.h"
 
 /**
- * free_data - frees data structure
- * @data: data structure
+ * free_my_info - frees my_info structure
+ * @my_info: my_info structure
  */
-void free_data(shell_data_t *data)
+void free_my_info(shell_my_info_t *my_info)
 {
 	unsigned int i;
 
-	for (i = 0; data->_env[i]; i++)
+	for (i = 0; my_info->_env[i]; i++)
 	{
-		free(data->_env[i]);
+		free(my_info->_env[i]);
 	}
 
-	free(data->_env);
-	free(data->pid);
+	free(my_info->_env);
+	free(my_info->pid);
 }
 
 /**
- * set_data - Initialize data structure
- * @data: data structure
+ * set_my_info - Initialize my_info structure
+ * @my_info: my_info structure
  * @av: argument vector
  */
-void set_data(shell_data_t *data, char **av)
+void set_my_info(shell_my_info_t *my_info, char **av)
 {
 	unsigned int i;
 
-	data->av = av;
-	data->input = NULL;
-	data->args = NULL;
-	data->status = 0;
-	data->counter = 1;
+	my_info->av = av;
+	my_info->input = NULL;
+	my_info->args = NULL;
+	my_info->status = 0;
+	my_info->counter = 1;
 
 	for (i = 0; environ[i]; i++)
 		;
 
-	data->_env = malloc(sizeof(char *) * (i + 1));
+	my_info->_env = malloc(sizeof(char *) * (i + 1));
 
 	for (i = 0; environ[i]; i++)
 	{
-		data->_env[i] = _strdup(environ[i]);
+		my_info->_env[i] = _strdup(environ[i]);
 	}
 
-	data->_env[i] = NULL;
-	data->pid = int_to_string(getpid());
+	my_info->_env[i] = NULL;
+	my_info->pid = int_to_string(getpid());
 }
 
 /**
@@ -54,14 +54,14 @@ void set_data(shell_data_t *data, char **av)
  */
 int main(int ac, char **av)
 {
-	shell_data_t data;
+	shell_my_info_t my_info;
 	(void) ac;
 
-	signal(SIGINT, handle_sigint);
-	set_data(&data, av);
-	run_shell_loop(&data);
-	free_data(&data);
-	if (data.status < 0)
+	signal(SIGINT, sign_int_handle);
+	set_my_info(&my_info, av);
+	run_shell_loop(&my_info);
+	free_my_info(&my_info);
+	if (my_info.status < 0)
 		return (255);
-	return (data.status);
+	return (my_info.status);
 }

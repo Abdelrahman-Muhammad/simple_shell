@@ -74,16 +74,16 @@ char *find_cmd(char *cmd, char **_environ)
 
 /**
  * cmd_exec - this function determines if a command is executable
- * @data: data structure
+ * @my_info: my_info structure
  * Return: 0 if is not an executable, other number if it does
  */
-int cmd_exec(shell_data_t *data)
+int cmd_exec(shell_my_info_t *my_info)
 {
 	struct stat st;
 	int i;
 	char *input;
 
-	input = data->args[0];
+	input = my_info->args[0];
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == '.')
@@ -112,7 +112,7 @@ int cmd_exec(shell_data_t *data)
 	{
 		return (i);
 	}
-	get_error_code(data, 127);
+	err_code_generate(my_info, 127);
 	return (-1);
 }
 
@@ -120,22 +120,22 @@ int cmd_exec(shell_data_t *data)
  * check_cmd_err - this function verifies if a user
  *				has permissions to access
  * @dir: destination directory
- * @data: data structure
+ * @my_info: my_info structure
  * Return: 1 if there is an error, 0 if not
  */
-int check_cmd_err(char *dir, shell_data_t *data)
+int check_cmd_err(char *dir, shell_my_info_t *my_info)
 {
 	if (dir == NULL)
 	{
-		get_error_code(data, 127);
+		err_code_generate(my_info, 127);
 		return (1);
 	}
 
-	if (_strcmp(data->args[0], dir) != 0)
+	if (_strcmp(my_info->args[0], dir) != 0)
 	{
 		if (access(dir, X_OK) == -1)
 		{
-			get_error_code(data, 126);
+			err_code_generate(my_info, 126);
 			free(dir);
 			return (1);
 		}
@@ -143,9 +143,9 @@ int check_cmd_err(char *dir, shell_data_t *data)
 	}
 	else
 	{
-		if (access(data->args[0], X_OK) == -1)
+		if (access(my_info->args[0], X_OK) == -1)
 		{
-			get_error_code(data, 126);
+			err_code_generate(my_info, 126);
 			return (1);
 		}
 	}
@@ -155,10 +155,10 @@ int check_cmd_err(char *dir, shell_data_t *data)
 
 /**
  * exec_cmmd - this function executes command lines
- * @data: data relevant (args and input)
+ * @my_info: my_info relevant (args and input)
  * Return: 1 on success.
  */
-int exec_cmmd(shell_data_t *data)
+int exec_cmmd(shell_my_info_t *my_info)
 {
 	pid_t pd;
 	pid_t wpd;
@@ -167,13 +167,13 @@ int exec_cmmd(shell_data_t *data)
 	char *dir;
 	(void) wpd;
 
-	exec = cmd_exec(data);
+	exec = cmd_exec(my_info);
 	if (exec == -1)
 		return (1);
 	if (exec == 0)
 	{
-		dir = find_cmd(data->args[0], data->_env);
-		if (check_cmd_err(dir, data) == 1)
+		dir = find_cmd(my_info->args[0], my_info->_env);
+		if (check_cmd_err(dir, my_info) == 1)
 			return (1);
 	}
 
@@ -181,14 +181,14 @@ int exec_cmmd(shell_data_t *data)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = find_cmd(data->args[0], data->_env);
+			dir = find_cmd(my_info->args[0], my_info->_env);
 		else
-			dir = data->args[0];
-		execve(dir + exec, data->args, data->_env);
+			dir = my_info->args[0];
+		execve(dir + exec, my_info->args, my_info->_env);
 	}
 	else if (pd < 0)
 	{
-		perror(data->av[0]);
+		perror(my_info->av[0]);
 		return (1);
 	}
 	else
@@ -198,6 +198,6 @@ int exec_cmmd(shell_data_t *data)
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
 
-	data->status = state / 256;
+	my_info->status = state / 256;
 	return (1);
 }
