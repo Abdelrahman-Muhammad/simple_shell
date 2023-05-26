@@ -38,7 +38,7 @@ int HELP_ME(shell_my_info_t *my_info)
 		write(STDERR_FILENO, my_info->args[0],
 		      MEAUSE_IT(my_info->args[0]));
 
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 	return (1);
 }
 
@@ -77,7 +77,7 @@ int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 		free(ERR);
 	}
 
-	my_info->status = eval;
+	my_info->CUURENT = eval;
 	return (eval);
 }
 
@@ -129,10 +129,10 @@ int close_my_shell(shell_my_info_t *my_info)
 		if (!THATS_DIGIT || LEN_OF_STR > 10 || ENO_NUM)
 		{
 			CODE_ERR_GET(my_info, 2);
-			my_info->status = 2;
+			my_info->CUURENT = 2;
 			return (1);
 		}
-		my_info->status = (ustatus % 256);
+		my_info->CUURENT = (ustatus % 256);
 	}
 	return (0);
 }

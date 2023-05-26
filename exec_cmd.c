@@ -196,6 +196,6 @@ int DO_COMMA(shell_my_info_t *my_info)
 		} while (!WIFEXITED(state) && !WIFSIGNALED(state));
 	}
 
-	my_info->status = state / 256;
+	my_info->CUURENT = state / 256;
 	return (1);
 }

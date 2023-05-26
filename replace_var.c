@@ -134,17 +134,17 @@ char *ARE_COMING(
 char *CHNAG_THEM(char *input, shell_my_info_t *my_infosh)
 {
 	replacement_variable_t *head, *index;
-	char *status, *new_input;
+	char *CUURENT, *new_input;
 	int olen, nlen;
 
-	status = INT_STR_CONV(my_infosh->status);
+	CUURENT = INT_STR_CONV(my_infosh->CUURENT);
 	head = NULL;
 
-	olen = CHNG_VAR(&head, input, status, my_infosh);
+	olen = CHNG_VAR(&head, input, CUURENT, my_infosh);
 
 	if (head == NULL)
 	{
-		free(status);
+		free(CUURENT);
 		return (input);
 	}
 
@@ -165,7 +165,7 @@ char *CHNAG_THEM(char *input, shell_my_info_t *my_infosh)
 	new_input = ARE_COMING(&head, input, new_input, nlen);
 
 	free(input);
-	free(status);
+	free(CUURENT);
 	MAKE_IT_FLY_ZR(&head);
 
 	return (new_input);

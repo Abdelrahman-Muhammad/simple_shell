@@ -44,7 +44,7 @@ int ENV_VAR_GET(shell_my_info_t *my_info)
 		write(STDOUT_FILENO, my_info->_env[i], j);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 
 	return (1);
 }

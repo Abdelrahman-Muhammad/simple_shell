@@ -90,7 +90,7 @@ void COMIN_GET(
 
 	while (ls_s != NULL && loop_sep)
 	{
-		if (my_infosh->status == 0)
+		if (my_infosh->CUURENT == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
 				loop_sep = 0;

@@ -153,7 +153,7 @@ void MAIN_APP(shell_my_info_t *my_info)
 
 			if (ERORR_CHK(my_info, input))
 			{
-				my_info->status = 2;
+				my_info->CUURENT = 2;
 				continue;
 			}
 			input = CHNAG_THEM(input, my_info);

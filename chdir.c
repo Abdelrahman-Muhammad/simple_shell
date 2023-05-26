@@ -44,7 +44,7 @@ void PAR_DIR(shell_my_info_t *my_info)
 		chdir("/");
 		ENV_SETTER("PWD", "/", my_info);
 	}
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 	free(cp_pwd);
 }
 
@@ -75,7 +75,7 @@ void SOME_DEST(shell_my_info_t *my_info)
 	free(cp_pwd);
 	free(cp_dir);
 
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 
 	chdir(dir);
 }
@@ -115,7 +115,7 @@ void PREV_DIC(shell_my_info_t *my_info)
 	if (p_oldpwd)
 		free(cp_oldpwd);
 
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 
 	chdir(p_pwd);
 }
@@ -151,7 +151,7 @@ void HOUSE_DIR(shell_my_info_t *my_info)
 	ENV_SETTER("OLDPWD", p_pwd, my_info);
 	ENV_SETTER("PWD", home, my_info);
 	free(p_pwd);
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 }
 
 /**

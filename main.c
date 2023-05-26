@@ -29,7 +29,7 @@ void I_WANT_THESE(shell_my_info_t *my_info, char **av)
 	my_info->av = av;
 	my_info->input = NULL;
 	my_info->args = NULL;
-	my_info->status = 0;
+	my_info->CUURENT = 0;
 	my_info->counter = 1;
 
 	for (i = 0; environ[i]; i++)
@@ -61,7 +61,7 @@ int main(int ac, char **av)
 	I_WANT_THESE(&my_info, av);
 	MAIN_APP(&my_info);
 	L_ET_IT(&my_info);
-	if (my_info.status < 0)
+	if (my_info.CUURENT < 0)
 		return (255);
-	return (my_info.status);
+	return (my_info.CUURENT);
 }

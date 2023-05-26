@@ -18,7 +18,7 @@
 
 /**
  * struct shell_my_info - ZZZZZZZZZZZZZZZZZZZZ
- * @status: ZZZZZZZZZZZZZZZZZ
+ * @CUURENT: ZZZZZZZZZZZZZZZZZ
  * @counter: ZZZZZZZZZZZZZZ
  * @pid: ZZZZZZZZZZZZZZZZZ
  * @av: ZZZZZZZZZZZZZZZZZ
@@ -28,7 +28,7 @@
  */
 typedef struct shell_my_info
 {
-	int status;
+	int CUURENT;
 	int counter;
 	char *pid;
 	char **av;
