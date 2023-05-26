@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * read_input_line_from_buffer - assigns the line var for get_line
- * @lineptr: Buffer that store the input str
- * @buffer: str that is been called to line
- * @n: size of line
- * @j: size of buffer
+ * USER_LINE_B - ZZZZZZZZZZZZZZZZZZZZZ
+ * @lineptr: ZZZZZZZZZZZZZZZZZZZZZ
+ * @buffer: ZZZZZZZZZZZZZZZZZZZZZ
+ * @n: ZZZZZZZZZZZZZZZZZZZZZ
+ * @j: ZZZZZZZZZZZZZZZZZZZZZ
  */
-void read_input_line_from_buffer(
+void USER_LINE_B(
 		char **lineptr, size_t *n, char *buffer, size_t j)
 {
 
@@ -35,13 +35,13 @@ void read_input_line_from_buffer(
 	}
 }
 /**
- * get_input_line - Read inpt from stream
- * @lineptr: buffer that stores the input
- * @n: size of lineptr
- * @stream: stream to read from
- * Return: The number of bytes
+ * BUFFER_GET - ZZZZZZZZZZZZZZZZZZZZZ
+ * @lineptr: ZZZZZZZZZZZZZZZZZZZZZ
+ * @n: ZZZZZZZZZZZZZZZZZZZZZ
+ * @stream: ZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZ
  */
-ssize_t get_input_line(char **lineptr, size_t *n, FILE *stream)
+ssize_t BUFFER_GET(char **lineptr, size_t *n, FILE *stream)
 {
 	int i;
 	static ssize_t input;
@@ -72,12 +72,12 @@ ssize_t get_input_line(char **lineptr, size_t *n, FILE *stream)
 			break;
 		}
 		if (input >= BUFFER_SIZE)
-			buffer = _realloc(buffer, input, input + 1);
+			buffer = REELOCK(buffer, input, input + 1);
 		buffer[input] = t;
 		input++;
 	}
 	buffer[input] = '\0';
-	read_input_line_from_buffer(lineptr, n, buffer, input);
+	USER_LINE_B(lineptr, n, buffer, input);
 	retval = input;
 	if (i != 0)
 		input = 0;
@@ -85,11 +85,11 @@ ssize_t get_input_line(char **lineptr, size_t *n, FILE *stream)
 }
 
 /**
- * read_input_line - reads the input string.
- * @i_eof: return value of getline function
- * Return: input string
+ * GET_BUFFER_LN - ZZZZZZZZZZZZZZZZZZZZZ
+ * @i_eof: ZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZ
  */
-char *read_input_line(int *i_eof)
+char *GET_BUFFER_LN(int *i_eof)
 {
 	char *input = NULL;
 	size_t bufsize = 0;
@@ -100,11 +100,11 @@ char *read_input_line(int *i_eof)
 }
 
 /**
- * execute_input_line - finds builtins and commands
- * @my_info: my_info relevant (args)
- * Return: 1 on success.
+ * DO_BUFF - ZZZZZZZZZZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZ
  */
-int execute_input_line(shell_my_info_t *my_info)
+int DO_BUFF(shell_my_info_t *my_info)
 {
 	int (*builtin)(shell_my_info_t *my_info);
 

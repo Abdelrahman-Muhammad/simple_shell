@@ -11,7 +11,7 @@ char *_strdup(const char *s)
 	char *copy = malloc(sizeof(char) * len);
 
 	if (copy != NULL)
-		_memcpy(copy, s, len);
+		DUPLIC_TE(copy, s, len);
 
 	return (copy);
 }

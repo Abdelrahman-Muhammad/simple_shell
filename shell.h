@@ -88,18 +88,18 @@ typedef struct builtin_s
 /* Pointer to an array of pointers to strings called the environment */
 extern char **environ;
 
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void _memcpy(void *newptr, const void *ptr, unsigned int size);
+char **REELOCKAGN(char **ptr, unsigned int old_size, unsigned int new_size);
+void *REELOCK(void *ptr, unsigned int old_size, unsigned int new_size);
+void DUPLIC_TE(void *newptr, const void *ptr, unsigned int size);
 
-separator_list_t *add_separator_node_end(separator_list_t **head, char sep);
-command_list_t *add_command_node_end(command_list_t **head, char *line);
-void free_separator_list(separator_list_t **head);
-void free_command_list(command_list_t **head);
+separator_list_t *FINISH_T(separator_list_t **head, char sep);
+command_list_t *DO_SOME_TWKS(command_list_t **head, char *line);
+void MAKE_IT_FLY(separator_list_t **head);
+void LET_IT(command_list_t **head);
 
-replacement_variable_t *add_replacement_variable_node(
+replacement_variable_t *ADD_IT_FLY(
 	replacement_variable_t **head, int lvar, char *var, int lval);
-void free_replacement_variable_list(replacement_variable_t **head);
+void MAKE_IT_FLY_ZR(replacement_variable_t **head);
 
 int _strcmp(char *s1, char *s2);
 int _strspn(char *s, char *s2);
@@ -121,8 +121,8 @@ int ERR_CHK(char *input, int i, char last);
 int ERORR_CHK(shell_my_info_t *my_info, char *input);
 void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool);
 
-char *rem_cmnt(char *in);
-void run_shell_loop(shell_my_info_t *my_info);
+char *TNMC_MER(char *in);
+void MAIN_APP(shell_my_info_t *my_info);
 
 /* split.c */
 char **split_input(char *input);
@@ -142,13 +142,13 @@ int replace_variables(replacement_variable_t **h, char *in, char *st,
 void check_for_environment_variables(replacement_variable_t **h, char *in,
 									 shell_my_info_t *my_info);
 
-ssize_t get_input_line(char **lineptr, size_t *n, FILE *stream);
-void read_input_line_from_buffer(char **lineptr, size_t *n, char *buff,
+ssize_t BUFFER_GET(char **lineptr, size_t *n, FILE *stream);
+void USER_LINE_B(char **lineptr, size_t *n, char *buff,
 								 size_t j);
 
-char *read_input_line(int *i_line);
+char *GET_BUFFER_LN(int *i_line);
 
-int execute_input_line(shell_my_info_t *my_info);
+int DO_BUFF(shell_my_info_t *my_info);
 
 char *SEARCH_COMM(char *cmd, char **_env);
 int DO_COMMA(shell_my_info_t *my_info);

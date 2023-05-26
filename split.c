@@ -58,11 +58,11 @@ void add_nodes(
 	for (i = 0; input[i]; i++)
 	{
 		if (input[i] == ';')
-			add_separator_node_end(head_s, input[i]);
+			FINISH_T(head_s, input[i]);
 
 		if (input[i] == '|' || input[i] == '&')
 		{
-			add_separator_node_end(head_s, input[i]);
+			FINISH_T(head_s, input[i]);
 			i++;
 		}
 	}
@@ -70,7 +70,7 @@ void add_nodes(
 	while (line != NULL)
 	{
 		line = swap_char(line, 1);
-		add_command_node_end(head_l, line);
+		DO_SOME_TWKS(head_l, line);
 		line = _str_del(NULL, ";|&");
 	}
 }
@@ -132,7 +132,7 @@ int split_cmd_op(shell_my_info_t *my_info, char *input)
 	{
 		my_info->input = list_l->line;
 		my_info->args = split_input(my_info->input);
-		loop = execute_input_line(my_info);
+		loop = DO_BUFF(my_info);
 		free(my_info->args);
 
 		if (loop == 0)
@@ -143,8 +143,8 @@ int split_cmd_op(shell_my_info_t *my_info, char *input)
 		if (list_l != NULL)
 			list_l = list_l->next;
 	}
-	free_separator_list(&head_s);
-	free_command_list(&head_l);
+	MAKE_IT_FLY(&head_s);
+	LET_IT(&head_l);
 
 	return ((loop == 0) ? 0 : 1);
 }
@@ -174,7 +174,7 @@ char **split_input(char *input)
 		if (i == bufsize)
 		{
 			bufsize += TOKEN_BUFFER_SIZE;
-			tokens = _reallocdp(tokens, i, sizeof(char *) * bufsize);
+			tokens = REELOCKAGN(tokens, i, sizeof(char *) * bufsize);
 			if (tokens == NULL)
 			{
 				write(STDERR_FILENO, ": allocation ERR\n", 18);

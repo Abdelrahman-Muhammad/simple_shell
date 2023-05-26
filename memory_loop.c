@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _memcpy - this function copies information between void pointers.
- * @newptr: destination pointer.
- * @ptr: source pointer.
- * @size: size of the new pointer.
+ * DUPLIC_TE - ZZZZZZZZZZZZ
+ * @newptr: ZZZZZZZZZZZZ
+ * @ptr: ZZZZZZZZZZZZ
+ * @size: ZZZZZZZZZZZZ
  */
-void _memcpy(void *newptr, const void *ptr, unsigned int size)
+void DUPLIC_TE(void *newptr, const void *ptr, unsigned int size)
 {
 	unsigned int i;
 	char *dest = (char *)newptr;
@@ -17,13 +17,13 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
 }
 
 /**
- * _realloc - this function reallocates a memory block.
- * @ptr: pointer to the memory previously allocated.
- * @old_size: size, in bytes, of the allocated memory for ptr.
- * @new_size: new size, in bytes, of the new memory block.
- * Return: returns a pointer or NULL if function fails
+ * REELOCK - ZZZZZZZZZZZZ
+ * @ptr: ZZZZZZZZZZZZ
+ * @old_size: ZZZZZZZZZZZZ.
+ * @new_size: ZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZ
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+void *REELOCK(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *newptr;
 	unsigned int i;
@@ -58,20 +58,19 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * _reallocdp - this function reallocates a memory block of a double pointer.
- * @ptr: double pointer to the memory previously allocated.
- * @old_size: size, in bytes, of the allocated memory of ptr.
- * @new_size: new size, in bytes, of the new memory block.
- * Return: returns a pointer or NULL if function fails
+ * REELOCKAGN - ZZZZZZZZZZZZZZZZ
+ * @ptr: ZZZZZZZZZZZZZZZZ
+ * @old_size: ZZZZZZZZZZZZZZ
+ * @new_size: ZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZZ
  */
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
+char **REELOCKAGN(char **ptr, unsigned int old_size, unsigned int new_size)
 {
 	char **newptr;
 	unsigned int i;
 
 	if (new_size == 0)
 	{
-		/* Free all memory allocated to the old pointer array and return NULL */
 		for (i = 0; i < old_size; i++)
 			free(ptr[i]);
 		free(ptr);
@@ -82,14 +81,12 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 		newptr = malloc(sizeof(char *) * new_size);
 		if (newptr == NULL)
 			return (NULL);
-		/* Initialize new pointers to NULL */
 		for (i = 0; i < new_size; i++)
 			newptr[i] = NULL;
 		return (newptr);
 	}
 	if (new_size == old_size)
 		return (ptr);
-	/* Allocate new memory for the pointer array */
 	newptr = malloc(sizeof(char *) * new_size);
 	if (newptr == NULL)
 	{
@@ -98,10 +95,8 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 		free(ptr);
 		return (NULL);
 	}
-	/* Copy pointers from old pointer array to new pointer array */
 	for (i = 0; i < old_size; i++)
 		newptr[i] = ptr[i];
-	/* Allocate memory or new pointers in new pointer array, if necessary */
 	for (i = old_size; i < new_size; i++)
 		newptr[i] = NULL;
 	free(ptr);
@@ -109,11 +104,11 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * rem_cmnt - this function removes comments from the input
- * @in: input string
- * Return: input without comments
+ * TNMC_MER - ZZZZZZZZZZZZZZZZZ
+ * @in: ZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZ
  */
-char *rem_cmnt(char *in)
+char *TNMC_MER(char *in)
 {
 	int i, j;
 	char *out = in;
@@ -138,10 +133,10 @@ char *rem_cmnt(char *in)
 }
 
 /**
- * run_shell_loop - this function runs the shell loop
- * @my_info: relevant my_info (av, input, args)
+ * MAIN_APP - ZZZZZZZZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZZZZ
  */
-void run_shell_loop(shell_my_info_t *my_info)
+void MAIN_APP(shell_my_info_t *my_info)
 {
 	char *input;
 	int loop = 1, i_eof;
@@ -149,10 +144,10 @@ void run_shell_loop(shell_my_info_t *my_info)
 	while (loop)
 	{
 		write(STDIN_FILENO, "~ bash: ", 8);
-		input = read_input_line(&i_eof);
+		input = GET_BUFFER_LN(&i_eof);
 		if (i_eof != -1)
 		{
-			input = rem_cmnt(input);
+			input = TNMC_MER(input);
 			if (input == NULL)
 				continue;
 

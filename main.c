@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * free_my_info - frees my_info structure
- * @my_info: my_info structure
+ * L_ET_IT - ZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZ
  */
-void free_my_info(shell_my_info_t *my_info)
+void L_ET_IT(shell_my_info_t *my_info)
 {
 	unsigned int i;
 
@@ -18,11 +18,11 @@ void free_my_info(shell_my_info_t *my_info)
 }
 
 /**
- * set_my_info - Initialize my_info structure
- * @my_info: my_info structure
- * @av: argument vector
+ * I_WANT_THESE - ZZZZZZZZZZZZ
+ * @my_info: ZZZZZZZZZZZZ
+ * @av: ZZZZZZZZZZZZ
  */
-void set_my_info(shell_my_info_t *my_info, char **av)
+void I_WANT_THESE(shell_my_info_t *my_info, char **av)
 {
 	unsigned int i;
 
@@ -47,10 +47,10 @@ void set_my_info(shell_my_info_t *my_info, char **av)
 }
 
 /**
- * main - Entry point
- * @ac: argument count
- * @av: argument vector
- * Return: 0 on success.
+ * main - INTRANCE
+ * @ac: ZZZZZZZZZZZZ
+ * @av: ZZZZZZZZZZZZ
+ * Return: 0 ZZZZZZZZZZZZ ZZZZZZZZZZZZ.
  */
 int main(int ac, char **av)
 {
@@ -58,9 +58,9 @@ int main(int ac, char **av)
 	(void) ac;
 
 	signal(SIGINT, HANDLE_SIGNAL);
-	set_my_info(&my_info, av);
-	run_shell_loop(&my_info);
-	free_my_info(&my_info);
+	I_WANT_THESE(&my_info, av);
+	MAIN_APP(&my_info);
+	L_ET_IT(&my_info);
 	if (my_info.status < 0)
 		return (255);
 	return (my_info.status);

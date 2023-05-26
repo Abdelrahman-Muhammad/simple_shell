@@ -1,13 +1,12 @@
 #include "shell.h"
 
 /**
- * add_separator_node_end - this function adds a separator found at the end of
- *				a separator_list_t.
- * @head: pointer to pointer to head node of linked list
- * @sep: separator found (; | &).
- * Return: returns a pointer to the head node
+ * FINISH_T - ZZZZZZZZZZZZZZZZZZZZZZ
+ * @head: ZZZZZZZZZZZZZZZZZZZZZZ
+ * @sep: ZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZ
  */
-separator_list_t *add_separator_node_end(separator_list_t **head, char sep)
+separator_list_t *FINISH_T(separator_list_t **head, char sep)
 {
 	separator_list_t *new_node, *temp_node = *head;
 
@@ -32,10 +31,10 @@ separator_list_t *add_separator_node_end(separator_list_t **head, char sep)
 }
 
 /**
- * free_separator_list - this function frees a separator_list_t
- * @head: pointer to pointer to head node of linked list
+ * MAKE_IT_FLY - ZZZZZZZZZZZZZZZZZZZZZZ
+ * @head: ZZZZZZZZZZZZZZZZZZZZZZ
  */
-void free_separator_list(separator_list_t **head)
+void MAKE_IT_FLY(separator_list_t **head)
 {
 	separator_list_t *temp_node = NULL, *curr_node = *head;
 
@@ -51,13 +50,12 @@ void free_separator_list(separator_list_t **head)
 }
 
 /**
- * add_command_node_end - this function adds a command line at the end of a
- *				command_list_t.
- * @head: pointer to pointer to head node of linked list
- * @line: command line.
- * Return: returns a pointer to the head node
+ * DO_SOME_TWKS - ZZZZZZZZZZZZZZZZZZZZZZ
+ * @head:ZZZZZZZZZZZZZZZZZZZZZZ
+ * @line: ZZZZZZZZZZZZZZZZZZZZZZ
+ * Return: ZZZZZZZZZZZZZZZZZZZZZZ
  */
-command_list_t *add_command_node_end(command_list_t **head, char *line)
+command_list_t *DO_SOME_TWKS(command_list_t **head, char *line)
 {
 	command_list_t *new_node, *temp_node = *head;
 
@@ -82,10 +80,10 @@ command_list_t *add_command_node_end(command_list_t **head, char *line)
 }
 
 /**
- * free_command_list - this function frees a command_list_t
- * @head: pointer to pointer to head node of linked list
+ * LET_IT - ZZZZZZZZZZZZZZZZZZZZZZ
+ * @head: ZZZZZZZZZZZZZZZZZZZZZZ
  */
-void free_command_list(command_list_t **head)
+void LET_IT(command_list_t **head)
 {
 	command_list_t *temp_node = NULL, *curr_node = *head;
 

@@ -70,7 +70,7 @@ void ENV_SETTER(char *name, char *value, shell_my_info_t *my_info)
 		free(var_env);
 	}
 
-	my_info->_env = _reallocdp(my_info->_env, i, sizeof(char *) * (i + 2));
+	my_info->_env = REELOCKAGN(my_info->_env, i, sizeof(char *) * (i + 2));
 	my_info->_env[i] = INF_CPY(name, value);
 	my_info->_env[i + 1] = NULL;
 }

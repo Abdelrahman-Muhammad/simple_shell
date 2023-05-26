@@ -20,7 +20,7 @@ void check_for_environment_variables(
 			if (_envr[row][chr] == '=')
 			{
 				lval = _strlen(_envr[row] + chr + 1);
-				add_replacement_variable_node(
+				ADD_IT_FLY(
 						h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
@@ -36,7 +36,7 @@ void check_for_environment_variables(
 		if (in[j] == ' ' || in[j] == '\t' || in[j] == ';' || in[j] == '\n')
 			break;
 	}
-	add_replacement_variable_node(h, j, NULL, 0);
+	ADD_IT_FLY(h, j, NULL, 0);
 }
 /**
  * replace_variables - this function checks if the typed variable is $$ or $?
@@ -56,19 +56,19 @@ int replace_variables(
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-				add_replacement_variable_node(h, 2, st, lst), i++;
+				ADD_IT_FLY(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_replacement_variable_node(h, 2, my_info->pid, lpd), i++;
+				ADD_IT_FLY(h, 2, my_info->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
-				add_replacement_variable_node(h, 0, NULL, 0);
+				ADD_IT_FLY(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-				add_replacement_variable_node(h, 0, NULL, 0);
+				ADD_IT_FLY(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-				add_replacement_variable_node(h, 0, NULL, 0);
+				ADD_IT_FLY(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-				add_replacement_variable_node(h, 0, NULL, 0);
+				ADD_IT_FLY(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-				add_replacement_variable_node(h, 0, NULL, 0);
+				ADD_IT_FLY(h, 0, NULL, 0);
 			else
 				check_for_environment_variables(h, in + i, my_info);
 		}
@@ -167,7 +167,7 @@ char *replace_variable(char *input, shell_my_info_t *my_infosh)
 
 	free(input);
 	free(status);
-	free_replacement_variable_list(&head);
+	MAKE_IT_FLY_ZR(&head);
 
 	return (new_input);
 }
