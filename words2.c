@@ -3,6 +3,7 @@
 /**
  * LETITDUMP - ZZZZZZZZZZZZZZZZ
  * @s: ZZZZZZZZZZZZZZZZZZZZZZZZZZZZreturns the duplicated string
+ * Return: ZZZZZZZZZZZZ
  */
 char *LETITDUMP(const char *s)
 {

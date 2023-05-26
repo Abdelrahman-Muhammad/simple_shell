@@ -49,7 +49,7 @@ typedef struct separator_list_s
 } separator_list_t;
 
 /**
- * struct ZZZZZZZZZZZZZZZZZZ
+ * struct command_list_s - ZZZZZZZZZZZZZZZZZZ
  * @line: ZZZZZZZZZZZZZZ
  * @next: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
@@ -60,11 +60,11 @@ typedef struct command_list_s
 } command_list_t;
 
 /**
- * struct replace_var - single linked list
- * @val: variable value
- * @len_var: variable length
- * @len_val: value length
- * @next: next node
+ * struct replacement_variable_list - ZZZZZZZZZZZZZ
+ * @val: vZZZZZZZZZZ
+ * @len_var: ZZZZZZZZZZ
+ * @len_val: ZZZZZZZZZZZ
+ * @next: ZZZZZZZZZ
  */
 typedef struct replacement_variable_list
 {
