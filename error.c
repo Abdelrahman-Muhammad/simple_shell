@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * check_rep - this function checks for repeated characters
- * @input: input string
- * @i: index
- * Return: repetitions of characters
+ * REP_CHK - ZZZZZZZZZZZZ
+ * @input: ZZZZZZZZZ
+ * @i: ZZZZZZZZZZZ
+ * Return: ZZZZZZZZZ
  */
-int check_rep(char *input, int i)
+int REP_CHK(char *input, int i)
 {
 	if (*(input - 1) == *input)
 	{
-		return (check_rep(input - 1, i + 1));
+		return (REP_CHK(input - 1, i + 1));
 	}
 	else
 	{
@@ -19,13 +19,13 @@ int check_rep(char *input, int i)
 }
 
 /**
- * check_err - this function finds syntax errors
- * @input: input string
- * @i: index
- * @last: last character read
- * Return: index of ERR. 0 when there are no errors
+ * ERR_CHK - ZZZZZZZZZZZZZ
+ * @input: ZXCCCCCCCCCC
+ * @i: ZXCCCCCCCCCCC
+ * @last: ZXCVZXCVZXCV
+ * Return: ZXCVZXCVZXCVXZV
  */
-int check_err(char *input, int i, char last)
+int ERR_CHK(char *input, int i, char last)
 {
 	int count = 0;
 
@@ -33,7 +33,7 @@ int check_err(char *input, int i, char last)
 		return (0);
 
 	if (*input == ' ' || *input == '\t')
-		return (check_err(input + 1, i + 1, last));
+		return (ERR_CHK(input + 1, i + 1, last));
 
 	if (*input == ';')
 		if (last == '|' || last == '&' || last == ';')
@@ -46,7 +46,7 @@ int check_err(char *input, int i, char last)
 
 		if (last == '|')
 		{
-			count = check_rep(input, 0);
+			count = REP_CHK(input, 0);
 			if (count == 0 || count > 1)
 				return (i);
 		}
@@ -58,20 +58,20 @@ int check_err(char *input, int i, char last)
 
 		if (last == '&')
 		{
-			count = check_rep(input, 0);
+			count = REP_CHK(input, 0);
 			if (count == 0 || count > 1)
 				return (i);
 		}
 	}
-	return (check_err(input + 1, i + 1, *input));
+	return (ERR_CHK(input + 1, i + 1, *input));
 }
 /**
- * check_first_char - this function finds the index of the first char
- * @input: input string
- * @i: index
- * Return: 1 if there is an ERR. 0 in other case.
+ * ONE_CHAR - ZZZZZZZZZZZZZZXCCCCCCCCCCCC
+ * @input: XCCCCCCCCCCCC
+ * @i: XCCCCCCCCCCCCC
+ * Return: 1 XZCCCCCCCCCCCCXC
  */
-int check_first_char(char *input, int *i)
+int ONE_CHAR(char *input, int *i)
 {
 	*i = 0;
 
@@ -92,13 +92,13 @@ int check_first_char(char *input, int *i)
 }
 
 /**
- * print_syntax_err - this function prints when a syntax ERR is found
- * @my_info: my_info structure
- * @input: input string
- * @i: index of the ERR
- * @bool: to control msg ERR
+ * ERORR_GET - ZCXVVVVXZCVZXCV
+ * @my_info: ZXVXZVCXZC
+ * @input: ZXVXCZV
+ * @i: ZXVXZCVXZCV
+ * @bool: ZXVXZVCZXCV
  */
-void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
+void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 {
 	char *msg, *msg2, *msg3, *ERR, *counter;
 	int length;
@@ -143,25 +143,25 @@ void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool)
 }
 
 /**
- * check_syntax_err - this function finds and prints a syntax ERR
- * @my_info: my_info structure
- * @input: input string
- * Return: 1 if there is an ERR. 0 in other case
+ * ERORR_CHK - ZZCVZXVZXCVCZXV
+ * @my_info: ZXVXZVZVX
+ * @input: ZXCVZXVZV
+ * Return: 1 ZVVVZXCVZXVZXV
  */
-int check_syntax_err(shell_my_info_t *my_info, char *input)
+int ERORR_CHK(shell_my_info_t *my_info, char *input)
 {
 	int begin = 0, f_char = 0, error_pos = 0;
 
-	f_char = check_first_char(input, &begin);
+	f_char = ONE_CHAR(input, &begin);
 	if (f_char == -1)
 	{
-		print_syntax_err(my_info, input, begin, 0);
+		ERORR_GET(my_info, input, begin, 0);
 		return (1);
 	}
-	error_pos = check_err(input + begin, 0, input[begin]);
+	error_pos = ERR_CHK(input + begin, 0, input[begin]);
 	if (error_pos != 0)
 	{
-		print_syntax_err(my_info, input, begin + error_pos, 1);
+		ERORR_GET(my_info, input, begin + error_pos, 1);
 		return (1);
 	}
 	return (0);

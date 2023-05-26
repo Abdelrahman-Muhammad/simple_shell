@@ -116,5 +116,5 @@ int execute_input_line(shell_my_info_t *my_info)
 	if (builtin != NULL)
 		return (builtin(my_info));
 
-	return (exec_cmmd(my_info));
+	return (DO_COMMA(my_info));
 }

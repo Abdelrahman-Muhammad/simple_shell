@@ -156,7 +156,7 @@ void run_shell_loop(shell_my_info_t *my_info)
 			if (input == NULL)
 				continue;
 
-			if (check_syntax_err(my_info, input))
+			if (ERORR_CHK(my_info, input))
 			{
 				my_info->status = 2;
 				continue;

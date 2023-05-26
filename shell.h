@@ -115,11 +115,11 @@ char *_strdup(const char *s);
 
 void str_rev(char *s);
 
-int check_first_char(char *input, int *i);
-int check_rep(char *input, int i);
-int check_err(char *input, int i, char last);
-int check_syntax_err(shell_my_info_t *my_info, char *input);
-void print_syntax_err(shell_my_info_t *my_info, char *input, int i, int bool);
+int ONE_CHAR(char *input, int *i);
+int REP_CHK(char *input, int i);
+int ERR_CHK(char *input, int i, char last);
+int ERORR_CHK(shell_my_info_t *my_info, char *input);
+void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool);
 
 char *rem_cmnt(char *in);
 void run_shell_loop(shell_my_info_t *my_info);
@@ -150,11 +150,11 @@ char *read_input_line(int *i_line);
 
 int execute_input_line(shell_my_info_t *my_info);
 
-char *find_cmd(char *cmd, char **_env);
-int exec_cmmd(shell_my_info_t *my_info);
-int _current_dir(char *path, int *i);
-int cmd_exec(shell_my_info_t *my_info);
-int check_cmd_err(char *dir, shell_my_info_t *my_info);
+char *SEARCH_COMM(char *cmd, char **_env);
+int DO_COMMA(shell_my_info_t *my_info);
+int CURR_FOLD(char *path, int *i);
+int DO_REQ(shell_my_info_t *my_info);
+int HAPPEND_ERR(char *dir, shell_my_info_t *my_info);
 
 int ENV_VAR_GET(shell_my_info_t *my_info);
 char *ENV_VAR(const char *name, char **_env);
@@ -183,11 +183,11 @@ char *ERR_CD(shell_my_info_t *, char *, char *, char *);
 char *ERR_MSG_ENV(shell_my_info_t *my_info);
 char *ERR_126(shell_my_info_t *my_info);
 
-void print_help_env(void);
-void print_help_exit(void);
-void print_help_setenv(void);
-void print_help_general(void);
-void print_help_unsetenv(void);
+void HELP_SHOER(void);
+void BYE_HLP(void);
+void SET_HLP(void);
+void FOR_ALL_HLP(void);
+void SET_HLP_SHOWER(void);
 
 void HELP_SHOW(void);
 void HELP_SHOWWW(void);

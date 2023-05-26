@@ -19,17 +19,17 @@ int HELP_ME(shell_my_info_t *my_info)
 {
 
 	if (my_info->args[1] == 0)
-		print_help_general();
+		FOR_ALL_HLP();
 	else if (_strcmp(my_info->args[1], "setenv") == 0)
-		print_help_setenv();
+		SET_HLP();
 	else if (_strcmp(my_info->args[1], "env") == 0)
-		print_help_env();
+		HELP_SHOER();
 	else if (_strcmp(my_info->args[1], "unsetenv") == 0)
-		print_help_unsetenv();
+		SET_HLP_SHOWER();
 	else if (_strcmp(my_info->args[1], "help") == 0)
 		HELP_SHOW();
 	else if (_strcmp(my_info->args[1], "exit") == 0)
-		print_help_exit();
+		BYE_HLP();
 	else if (_strcmp(my_info->args[1], "cd") == 0)
 		HELP_SHOWWW();
 	else if (_strcmp(my_info->args[1], "alias") == 0)

@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * print_help_env - Help information for the builtin env
+ * HELP_SHOER - XBZXCXZCZXCZXC
  */
-void print_help_env(void)
+void HELP_SHOER(void)
 {
 	char *help = "env: env [option] [name=value] [command [args]]\n\t";
 
@@ -13,9 +13,9 @@ void print_help_env(void)
 
 }
 /**
- * print_help_setenv - Help information for the builtin setenv
+ * SET_HLP - XBZXCXZCZXCZXC
  */
-void print_help_setenv(void)
+void SET_HLP(void)
 {
 
 	char *help = "setenv: setenv (const char *name, const char *value,";
@@ -27,9 +27,9 @@ void print_help_setenv(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * print_help_unsetenv - Help information for the builtin unsetenv
+ * SET_HLP_SHOWER - XBZXCXZCZXCZXC
  */
-void print_help_unsetenv(void)
+void SET_HLP_SHOWER(void)
 {
 	char *help = "unsetenv: unsetenv (const char *name)\n\t";
 
@@ -40,9 +40,9 @@ void print_help_unsetenv(void)
 
 
 /**
- * print_help_general - Entry point for help information for the help builtin
+ * FOR_ALL_HLP - XBZXCXZCZXCZXC
  */
-void print_help_general(void)
+void FOR_ALL_HLP(void)
 {
 	char *help = "^-^ bash, version 1.0(1)-release\n";
 
@@ -61,9 +61,9 @@ void print_help_general(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * print_help_exit - Help information fot the builint exit
+ * BYE_HLP - XBZXCXZCZXCZXC
  */
-void print_help_exit(void)
+void BYE_HLP(void)
 {
 	char *help = "exit: exit [n]\n Exit shell.\n";
 

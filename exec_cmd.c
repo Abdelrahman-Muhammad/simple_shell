@@ -1,13 +1,12 @@
 #include "shell.h"
 
 /**
- * _current_dir - this function checks if :
- *				is in the current directory.
- * @path: type char pointer char.
- * @i: type int pointer of index.
- * Return: 1 if the path is searchable in the cd, 0 otherwise.
+ * CURR_FOLD - ZXCCCCCCCCCCCCCVXC
+ * @path: ZXCCCCCCCCCCCCCVXC
+ * @i: ZXCCCCCCCCCCCCCVXC
+ * Return: 1 if theZXCCCCCCCCCCCCCVXC
  */
-int _current_dir(char *path, int *i)
+int CURR_FOLD(char *path, int *i)
 {
 	if (path[*i] == ':')
 		return (1);
@@ -24,12 +23,12 @@ int _current_dir(char *path, int *i)
 }
 
 /**
- * find_cmd - this function locates a command
- * @cmd: command name
- * @_environ: environment variable
- * Return: location of the command.
+ * SEARCH_COMM - ZXCCCCCCCCCCCCCVXC
+ * @cmd: ZXCCCCCCCCCCCCCVXC
+ * @_environ: ZXCCCCCCCCCCCCCVXC
+ * Return: ZXCCCCCCCCCCCCCVXC
  */
-char *find_cmd(char *cmd, char **_environ)
+char *SEARCH_COMM(char *cmd, char **_environ)
 {
 	char *path, *ptr_path, *token_path, *dir;
 	int len_dir, len_cmd, i;
@@ -44,7 +43,7 @@ char *find_cmd(char *cmd, char **_environ)
 		i = 0;
 		while (token_path != NULL)
 		{
-			if (_current_dir(path, &i))
+			if (CURR_FOLD(path, &i))
 				if (stat(cmd, &st) == 0)
 					return (cmd);
 			len_dir = _strlen(token_path);
@@ -73,11 +72,11 @@ char *find_cmd(char *cmd, char **_environ)
 }
 
 /**
- * cmd_exec - this function determines if a command is executable
- * @my_info: my_info structure
- * Return: 0 if is not an executable, other number if it does
+ * DO_REQ - ZXCCCCCCCCCCCCCVXC
+ * @my_info: ZXCCCCCCCCCCCCCVXC
+ * Return: ZXCCCCCCCCCCCCCVXC
  */
-int cmd_exec(shell_my_info_t *my_info)
+int DO_REQ(shell_my_info_t *my_info)
 {
 	struct stat st;
 	int i;
@@ -117,13 +116,12 @@ int cmd_exec(shell_my_info_t *my_info)
 }
 
 /**
- * check_cmd_err - this function verifies if a user
- *				has permissions to access
- * @dir: destination directory
- * @my_info: my_info structure
- * Return: 1 if there is an ERR, 0 if not
+ * HAPPEND_ERR - ZXCCCCCCCCCCCCCVXC
+ * @dir: ZXCCCCCCCCCCCCCVXC
+ * @my_info: ZXCCCCCCCCCCCCCVXC
+ * Return: 1 ZXCCCCCCCCCCCCCVXC
  */
-int check_cmd_err(char *dir, shell_my_info_t *my_info)
+int HAPPEND_ERR(char *dir, shell_my_info_t *my_info)
 {
 	if (dir == NULL)
 	{
@@ -154,11 +152,11 @@ int check_cmd_err(char *dir, shell_my_info_t *my_info)
 }
 
 /**
- * exec_cmmd - this function executes command lines
- * @my_info: my_info relevant (args and input)
- * Return: 1 on success.
+ * DO_COMMA - ZXCCCCCCCCCCCCCVXC
+ * @my_info: ZXCCCCCCCCCCCCCVXC
+ * Return: 1 ZXCCCCCCCCCCCCCVXC
  */
-int exec_cmmd(shell_my_info_t *my_info)
+int DO_COMMA(shell_my_info_t *my_info)
 {
 	pid_t pd;
 	pid_t wpd;
@@ -167,13 +165,13 @@ int exec_cmmd(shell_my_info_t *my_info)
 	char *dir;
 	(void) wpd;
 
-	exec = cmd_exec(my_info);
+	exec = DO_REQ(my_info);
 	if (exec == -1)
 		return (1);
 	if (exec == 0)
 	{
-		dir = find_cmd(my_info->args[0], my_info->_env);
-		if (check_cmd_err(dir, my_info) == 1)
+		dir = SEARCH_COMM(my_info->args[0], my_info->_env);
+		if (HAPPEND_ERR(dir, my_info) == 1)
 			return (1);
 	}
 
@@ -181,7 +179,7 @@ int exec_cmmd(shell_my_info_t *my_info)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = find_cmd(my_info->args[0], my_info->_env);
+			dir = SEARCH_COMM(my_info->args[0], my_info->_env);
 		else
 			dir = my_info->args[0];
 		execve(dir + exec, my_info->args, my_info->_env);
