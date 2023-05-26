@@ -27,13 +27,13 @@ int HELP_ME(shell_my_info_t *my_info)
 	else if (_strcmp(my_info->args[1], "unsetenv") == 0)
 		print_help_unsetenv();
 	else if (_strcmp(my_info->args[1], "help") == 0)
-		print_help();
+		HELP_SHOW();
 	else if (_strcmp(my_info->args[1], "exit") == 0)
 		print_help_exit();
 	else if (_strcmp(my_info->args[1], "cd") == 0)
-		print_help_cd();
+		HELP_SHOWWW();
 	else if (_strcmp(my_info->args[1], "alias") == 0)
-		print_help_alias();
+		HELP_SHOWW();
 	else
 		write(STDERR_FILENO, my_info->args[0],
 		      _strlen(my_info->args[0]));
@@ -55,19 +55,19 @@ int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 	switch (eval)
 	{
 	case -1:
-		ERR = error_message_env(my_info);
+		ERR = ERR_MSG_ENV(my_info);
 		break;
 	case 126:
-		ERR = error_message_path_126(my_info);
+		ERR = ERR_126(my_info);
 		break;
 	case 127:
-		ERR = error_message_not_found(my_info);
+		ERR = N_T_FONDE(my_info);
 		break;
 	case 2:
 		if (_strcmp("exit", my_info->args[0]) == 0)
-			ERR = error_message_exit_shell(my_info);
+			ERR = EXX_ERR(my_info);
 		else if (_strcmp("cd", my_info->args[0]) == 0)
-			ERR = error_message_get_cd(my_info);
+			ERR = ERR_CDD(my_info);
 		break;
 	}
 

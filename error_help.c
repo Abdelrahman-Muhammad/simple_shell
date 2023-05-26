@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * error_message_env - ERR message for env in ENV_VAR.
- * @my_info: my_info relevant (counter, arguments)
- * Return: ERR message.
+ * ERR_MSG_ENV - ZXVZXCVZXVZXCV
+ * @my_info: ZXVZXCVZXCVZXCVXCV
+ * Return: ERR ZXVCZXCVZXCV.
  */
-char *error_message_env(shell_my_info_t *my_info)
+char *ERR_MSG_ENV(shell_my_info_t *my_info)
 {
 	int length;
 	char *ERR;
@@ -36,11 +36,11 @@ char *error_message_env(shell_my_info_t *my_info)
 	return (ERR);
 }
 /**
- * error_message_path_126 - ERR msg for path and failure denied permission.
- * @my_info: my_info relevant (counter, arguments).
- * Return: The ERR string.
+ * ERR_126 - ADGDFJGHKB
+ * @my_info: JKLJZZXCZXVZCXV
+ * Return: ZXCZXCZXVXCV
  */
-char *error_message_path_126(shell_my_info_t *my_info)
+char *ERR_126(shell_my_info_t *my_info)
 {
 	int length;
 	char *ver_str;
@@ -68,9 +68,9 @@ char *error_message_path_126(shell_my_info_t *my_info)
 }
 
 /**
- * print_help - Help information for the builtin help.
+ * HELP_SHOW - ASFSADGDFAGGGDAFG
  */
-void print_help(void)
+void HELP_SHOW(void)
 {
 	char *help = "help: help [-dms] [pattern ...]\n";
 
@@ -81,9 +81,9 @@ void print_help(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * print_help_alias - Help information for the builtin alias.
+ * HELP_SHOWW - ADFGDFGDFGDFG
  */
-void print_help_alias(void)
+void HELP_SHOWW(void)
 {
 	char *help = "alias: alias [-p] [name[=value]...]\n";
 
@@ -92,9 +92,9 @@ void print_help_alias(void)
 	write(STDOUT_FILENO, help, _strlen(help));
 }
 /**
- * print_help_cd - Help information for the builtin alias.
+ * HELP_SHOWWW - As.SDGFDG
  */
-void print_help_cd(void)
+void HELP_SHOWWW(void)
 {
 	char *help = "cd: cd [-L|[-P [-e]] [-@]] [dir]\n";
 

@@ -175,13 +175,13 @@ int INT_LEN(int n);
 int STR_INT_CONV(char *s);
 char *INT_STR_CONV(int n);
 
-char *error_message_get_cd(shell_my_info_t *my_info);
-char *error_message_not_found(shell_my_info_t *my_info);
-char *error_message_exit_shell(shell_my_info_t *my_info);
-char *cd_error_message(shell_my_info_t *, char *, char *, char *);
+char *ERR_CDD(shell_my_info_t *my_info);
+char *N_T_FONDE(shell_my_info_t *my_info);
+char *EXX_ERR(shell_my_info_t *my_info);
+char *ERR_CD(shell_my_info_t *, char *, char *, char *);
 
-char *error_message_env(shell_my_info_t *my_info);
-char *error_message_path_126(shell_my_info_t *my_info);
+char *ERR_MSG_ENV(shell_my_info_t *my_info);
+char *ERR_126(shell_my_info_t *my_info);
 
 void print_help_env(void);
 void print_help_exit(void);
@@ -189,9 +189,9 @@ void print_help_setenv(void);
 void print_help_general(void);
 void print_help_unsetenv(void);
 
-void print_help(void);
-void print_help_cd(void);
-void print_help_alias(void);
+void HELP_SHOW(void);
+void HELP_SHOWWW(void);
+void HELP_SHOWW(void);
 
 void HANDLE_SIGNAL(int sig);
 int HELP_ME(shell_my_info_t *my_info);

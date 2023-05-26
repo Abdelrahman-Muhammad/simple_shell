@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * cd_error_message - this function concatenates the message for cd ERR
- * @my_info: my_info relevant (directory)
- * @msg: message to print
- * @ERR: output message
- * @ver_str: counter lines
+ * ERR_CD - DFHFGHZXCXZC
+ * @my_info: ZXCVZXCVZCXV
+ * @msg: ZXVZXCVZXCV
+ * @ERR: ZXVZXCVZXV
+ * @ver_str: ZXCVXZCVXZCV
  * Return: ERR message
  */
-char *cd_error_message(
+char *ERR_CD(
 		shell_my_info_t *my_info, char *msg, char *ERR, char *ver_str)
 {
 	char *illegal_flag;
@@ -39,11 +39,11 @@ char *cd_error_message(
 }
 
 /**
- * error_message_get_cd - this function ERR message for cd command in get_cd
- * @my_info: my_info relevant (directory)
- * Return: Error message
+ * ERR_CDD - XZCVZXVZXCV
+ * @my_info: ZXCVZXCVZXCV
+ * Return: ZXVXZCVXCV
  */
-char *error_message_get_cd(shell_my_info_t *my_info)
+char *ERR_CDD(shell_my_info_t *my_info)
 {
 	int length, len_id;
 	char *ERR, *ver_str, *msg;
@@ -70,7 +70,7 @@ char *error_message_get_cd(shell_my_info_t *my_info)
 		return (NULL);
 	}
 
-	ERR = cd_error_message(my_info, msg, ERR, ver_str);
+	ERR = ERR_CD(my_info, msg, ERR, ver_str);
 
 	free(ver_str);
 
@@ -78,11 +78,11 @@ char *error_message_get_cd(shell_my_info_t *my_info)
 }
 
 /**
- * error_message_not_found - generic ERR message for command not found
- * @my_info: my_info relevant (counter, arguments)
- * Return: Error message
+ * N_T_FONDE - gZXCVZXCVXCVZXCV
+ * @my_info: ZXVZXCVXZCV
+ * Return: ZZZZZZZZZZ
  */
-char *error_message_not_found(shell_my_info_t *my_info)
+char *N_T_FONDE(shell_my_info_t *my_info)
 {
 	int length;
 	char *ERR;
@@ -110,11 +110,11 @@ char *error_message_not_found(shell_my_info_t *my_info)
 }
 
 /**
- * error_message_exit_shell - generic ERR message for exit in get_exit
- * @my_info: my_info relevant (counter, arguments)
- * Return: Error message
+ * EXX_ERR - gXZVXCVXZCV
+ * @my_info: ZXVZXCVXZCV
+ * Return: ZXVCZXCV
  */
-char *error_message_exit_shell(shell_my_info_t *my_info)
+char *EXX_ERR(shell_my_info_t *my_info)
 {
 	int length;
 	char *ERR;
