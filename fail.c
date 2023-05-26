@@ -100,7 +100,7 @@ int ONE_CHAR(char *input, int *i)
  */
 void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 {
-	char *msg, *msg2, *msg3, *ERR, *ADDAD;
+	char *msg, *msg2, *msg3, *nofix, *ADDAD;
 	int length;
 
 	if (input[i] == ';')
@@ -116,29 +116,29 @@ void ERORR_GET(shell_my_info_t *my_info, char *input, int i, int bool)
 	if (input[i] == '&')
 		msg = (input[i + 1] == '&' ? "&&" : "&");
 
-	msg2 = ": Syntax ERR: \"";
+	msg2 = ": Syntax nofix: \"";
 	msg3 = "\" unexpected\n";
 	ADDAD = INT_STR_CONV(my_info->ADDAD);
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ADDAD) + MEAUSE_IT(msg) +
 		MEAUSE_IT(msg2) + MEAUSE_IT(msg3) + 3;
 
-	ERR = malloc(sizeof(char) * (length));
-	if (ERR == NULL)
+	nofix = malloc(sizeof(char) * (length));
+	if (nofix == NULL)
 	{
 		free(ADDAD);
 		return;
 	}
-	OLDANOONE(ERR, my_info->av[0]);
-	OLDONE(ERR, ": ");
-	OLDONE(ERR, ADDAD);
-	OLDONE(ERR, msg2);
-	OLDONE(ERR, msg);
-	OLDONE(ERR, msg3);
-	OLDONE(ERR, "\0");
-	ERR[length - 1] = '\0';
+	OLDANOONE(nofix, my_info->av[0]);
+	OLDONE(nofix, ": ");
+	OLDONE(nofix, ADDAD);
+	OLDONE(nofix, msg2);
+	OLDONE(nofix, msg);
+	OLDONE(nofix, msg3);
+	OLDONE(nofix, "\0");
+	nofix[length - 1] = '\0';
 
-	write(STDERR_FILENO, ERR, length - 1);
-	free(ERR);
+	write(STDERR_FILENO, nofix, length - 1);
+	free(nofix);
 	free(ADDAD);
 }
 

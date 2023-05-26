@@ -50,31 +50,31 @@ int HELP_ME(shell_my_info_t *my_info)
  */
 int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 {
-	char *ERR;
+	char *nofix;
 
 	switch (eval)
 	{
 	case -1:
-		ERR = ERR_MSG_ENV(my_info);
+		nofix = ERR_MSG_ENV(my_info);
 		break;
 	case 126:
-		ERR = ERR_126(my_info);
+		nofix = ERR_126(my_info);
 		break;
 	case 127:
-		ERR = N_T_FONDE(my_info);
+		nofix = N_T_FONDE(my_info);
 		break;
 	case 2:
 		if (ARESAMEA("exit", my_info->args[0]) == 0)
-			ERR = EXX_ERR(my_info);
+			nofix = EXX_ERR(my_info);
 		else if (ARESAMEA("cd", my_info->args[0]) == 0)
-			ERR = ERR_CDD(my_info);
+			nofix = ERR_CDD(my_info);
 		break;
 	}
 
-	if (ERR)
+	if (nofix)
 	{
-		write(STDERR_FILENO, ERR, MEAUSE_IT(ERR));
-		free(ERR);
+		write(STDERR_FILENO, nofix, MEAUSE_IT(nofix));
+		free(nofix);
 	}
 
 	my_info->CUURENT = eval;

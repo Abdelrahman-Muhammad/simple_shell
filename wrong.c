@@ -3,12 +3,12 @@
 /**
  * ERR_MSG_ENV - ZXVZXCVZXVZXCV
  * @my_info: ZXVZXCVZXCVZXCVXCV
- * Return: ERR ZXVCZXCVZXCV.
+ * Return: nofix ZXVCZXCVZXCV.
  */
 char *ERR_MSG_ENV(shell_my_info_t *my_info)
 {
 	int length;
-	char *ERR;
+	char *nofix;
 	char *ver_str;
 	char *msg;
 
@@ -16,24 +16,24 @@ char *ERR_MSG_ENV(shell_my_info_t *my_info)
 	msg = ": Unable to add/remove from environment\n";
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + MEAUSE_IT(msg) + 4;
-	ERR = malloc(sizeof(char) * (length + 1));
-	if (ERR == 0)
+	nofix = malloc(sizeof(char) * (length + 1));
+	if (nofix == 0)
 	{
-		free(ERR);
+		free(nofix);
 		free(ver_str);
 		return (NULL);
 	}
 
-	OLDANOONE(ERR, my_info->av[0]);
-	OLDONE(ERR, ": ");
-	OLDONE(ERR, ver_str);
-	OLDONE(ERR, ": ");
-	OLDONE(ERR, my_info->args[0]);
-	OLDONE(ERR, msg);
-	OLDONE(ERR, "\0");
+	OLDANOONE(nofix, my_info->av[0]);
+	OLDONE(nofix, ": ");
+	OLDONE(nofix, ver_str);
+	OLDONE(nofix, ": ");
+	OLDONE(nofix, my_info->args[0]);
+	OLDONE(nofix, msg);
+	OLDONE(nofix, "\0");
 	free(ver_str);
 
-	return (ERR);
+	return (nofix);
 }
 /**
  * ERR_126 - ADGDFJGHKB
@@ -44,27 +44,27 @@ char *ERR_126(shell_my_info_t *my_info)
 {
 	int length;
 	char *ver_str;
-	char *ERR;
+	char *nofix;
 
 	ver_str = INT_STR_CONV(my_info->ADDAD);
 	length = MEAUSE_IT(my_info->av[0]) + MEAUSE_IT(ver_str);
 	length += MEAUSE_IT(my_info->args[0]) + 24;
-	ERR = malloc(sizeof(char) * (length + 1));
-	if (ERR == 0)
+	nofix = malloc(sizeof(char) * (length + 1));
+	if (nofix == 0)
 	{
-		free(ERR);
+		free(nofix);
 		free(ver_str);
 		return (NULL);
 	}
-	OLDANOONE(ERR, my_info->av[0]);
-	OLDONE(ERR, ": ");
-	OLDONE(ERR, ver_str);
-	OLDONE(ERR, ": ");
-	OLDONE(ERR, my_info->args[0]);
-	OLDONE(ERR, ": Permission denied\n");
-	OLDONE(ERR, "\0");
+	OLDANOONE(nofix, my_info->av[0]);
+	OLDONE(nofix, ": ");
+	OLDONE(nofix, ver_str);
+	OLDONE(nofix, ": ");
+	OLDONE(nofix, my_info->args[0]);
+	OLDONE(nofix, ": Permission denied\n");
+	OLDONE(nofix, "\0");
 	free(ver_str);
-	return (ERR);
+	return (nofix);
 }
 
 /**
