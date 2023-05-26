@@ -143,7 +143,7 @@ void MAIN_APP(shell_my_info_t *my_info)
 
 	while (loop)
 	{
-		write(STDIN_FILENO, "~ bash: ", 8);
+		write(STDIN_FILENO, "~ abdo ", 8);
 		input = GET_BUFFER_LN(&i_eof);
 		if (i_eof != -1)
 		{
