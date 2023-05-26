@@ -38,40 +38,40 @@ typedef struct shell_my_info
 } shell_my_info_t;
 
 /**
- * struct separator_list_s - ZZZZZZZZZZZZZZZZZZZZZZZZ
+ * struct AERO_SPC - ZZZZZZZZZZZZZZZZZZZZZZZZ
  * @DIVIDE: ZZZZZZZZZZZZZZ
  * @next: ZZZZZZZZZZZZZZZZZ
  */
-typedef struct separator_list_s
+typedef struct AERO_SPC
 {
 	char DIVIDE;
-	struct separator_list_s *next;
+	struct AERO_SPC *next;
 } separator_list_t;
 
 /**
- * struct command_list_s - ZZZZZZZZZZZZZZZZZZ
+ * struct ORDER_ALOT - ZZZZZZZZZZZZZZZZZZ
  * @line: ZZZZZZZZZZZZZZ
  * @next: ZZZZZZZZZZZZZZZZZZZZZZZZ
  */
-typedef struct command_list_s
+typedef struct ORDER_ALOT
 {
 	char *line;
-	struct command_list_s *next;
+	struct ORDER_ALOT *next;
 } command_list_t;
 
 /**
- * struct replacement_variable_list - ZZZZZZZZZZZZZ
+ * struct PLACE_HOLDER - ZZZZZZZZZZZZZ
  * @val: vZZZZZZZZZZ
  * @len_var: ZZZZZZZZZZ
  * @len_val: ZZZZZZZZZZZ
  * @next: ZZZZZZZZZ
  */
-typedef struct replacement_variable_list
+typedef struct PLACE_HOLDER
 {
 	char *val;
 	int len_var;
 	int len_val;
-	struct replacement_variable_list *next;
+	struct PLACE_HOLDER *next;
 } replacement_variable_t;
 
 /**
