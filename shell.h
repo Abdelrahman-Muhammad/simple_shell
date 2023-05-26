@@ -165,11 +165,11 @@ char *copy_info(char *name, char *value);
 void set_env(char *name, char *value, shell_my_info_t *my_info);
 int compare_environement_variable_name(const char *nenv, const char *name);
 
-void change_to_dir(shell_my_info_t *my_info);
-void change_to_dot_dir(shell_my_info_t *my_info);
-void change_to_home_dir(shell_my_info_t *my_info);
-void change_to_ols_dir(shell_my_info_t *my_info);
-int change_directory_shell(shell_my_info_t *my_info);
+void SOME_DEST(shell_my_info_t *my_info);
+void PAR_DIR(shell_my_info_t *my_info);
+void HOUSE_DIR(shell_my_info_t *my_info);
+void PREV_DIC(shell_my_info_t *my_info);
+int CURR_CHNG(shell_my_info_t *my_info);
 
 int INT_LEN(int n);
 int STR_INT_CONV(char *s);
@@ -196,7 +196,7 @@ void print_help_alias(void);
 void HANDLE_SIGNAL(int sig);
 int HELP_ME(shell_my_info_t *my_info);
 int CODE_ERR_GET(shell_my_info_t *my_info, int eval);
-int (*get_builtin_function(char *cmd))(shell_my_info_t *my_info);
+int (*BULT_FUNC_GT(char *cmd))(shell_my_info_t *my_info);
 
 int close_my_shell(shell_my_info_t *my_info);
 

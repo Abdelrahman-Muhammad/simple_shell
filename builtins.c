@@ -82,18 +82,18 @@ int CODE_ERR_GET(shell_my_info_t *my_info, int eval)
 }
 
 /**
- * get_builtin_function - builtin that pais the command in the arg
+ * BULT_FUNC_GT - builtin that pais the command in the arg
  * @cmd: command
  * Return: function pointer of the builtin command
  */
-int (*get_builtin_function(char *cmd))(shell_my_info_t *)
+int (*BULT_FUNC_GT(char *cmd))(shell_my_info_t *)
 {
 	builtin_t builtin[] = {
 		{ "env", ENV_VAR_GET },
 		{ "exit", close_my_shell },
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
-		{ "cd", change_directory_shell },
+		{ "cd", CURR_CHNG },
 		{ "help", HELP_ME },
 		{ NULL, NULL }
 	};
@@ -116,17 +116,17 @@ int (*get_builtin_function(char *cmd))(shell_my_info_t *)
 int close_my_shell(shell_my_info_t *my_info)
 {
 	unsigned int ustatus;
-	int is_digit;
-	int str_len;
-	int big_number;
+	int THATS_DIGIT;
+	int LEN_OF_STR;
+	int ENO_NUM;
 
 	if (my_info->args[1] != NULL)
 	{
 		ustatus = STR_INT_CONV(my_info->args[1]);
-		is_digit = _isdigit(my_info->args[1]);
-		str_len = _strlen(my_info->args[1]);
-		big_number = ustatus > (unsigned int)INT_MAX;
-		if (!is_digit || str_len > 10 || big_number)
+		THATS_DIGIT = _isdigit(my_info->args[1]);
+		LEN_OF_STR = _strlen(my_info->args[1]);
+		ENO_NUM = ustatus > (unsigned int)INT_MAX;
+		if (!THATS_DIGIT || LEN_OF_STR > 10 || ENO_NUM)
 		{
 			CODE_ERR_GET(my_info, 2);
 			my_info->status = 2;

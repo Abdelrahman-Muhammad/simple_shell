@@ -111,7 +111,7 @@ int execute_input_line(shell_my_info_t *my_info)
 	if (my_info->args[0] == NULL)
 		return (1);
 
-	builtin = get_builtin_function(my_info->args[0]);
+	builtin = BULT_FUNC_GT(my_info->args[0]);
 
 	if (builtin != NULL)
 		return (builtin(my_info));

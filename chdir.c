@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * change_to_dot_dir - this function changes to the parent directory
- * @my_info: my_info relevant (environ)
+ * PAR_DIR - ASTEUIIIIIPJKL
+ * @my_info: ASFXHBCMBVJGHJ
  */
-void change_to_dot_dir(shell_my_info_t *my_info)
+void PAR_DIR(shell_my_info_t *my_info)
 {
 	char pwd[PATH_MAX];
 	char *dir, *cp_pwd, *cp_str_del_pwd;
@@ -49,10 +49,10 @@ void change_to_dot_dir(shell_my_info_t *my_info)
 }
 
 /**
- * change_to_dir - this function changes to a directory given by the user
- * @my_info: my_info relevant (directories)
+ * SOME_DEST - ASDGDJVMFBNB
+ * @my_info: ASDGDFJHHFDJFH
  */
-void change_to_dir(shell_my_info_t *my_info)
+void SOME_DEST(shell_my_info_t *my_info)
 {
 	char pwd[PATH_MAX];
 	char *dir, *cp_pwd, *cp_dir;
@@ -81,11 +81,10 @@ void change_to_dir(shell_my_info_t *my_info)
 }
 
 /**
- * change_to_ols_dir - this function changes
- *					to the previous directory
- * @my_info: my_info relevant (environ)
+ * PREV_DIC - AGFDSAF
+ * @my_info: ASGFDHFGHFGH
  */
-void change_to_ols_dir(shell_my_info_t *my_info)
+void PREV_DIC(shell_my_info_t *my_info)
 {
 	char pwd[PATH_MAX];
 	char *p_pwd, *p_oldpwd, *cp_pwd, *cp_oldpwd;
@@ -122,10 +121,10 @@ void change_to_ols_dir(shell_my_info_t *my_info)
 }
 
 /**
- * change_to_home_dir - this function changes to home directory
- * @my_info: my_info relevant (environ)
+ * HOUSE_DIR - SADFHGDH
+ * @my_info: ERYREYTRTY
  */
-void change_to_home_dir(shell_my_info_t *my_info)
+void HOUSE_DIR(shell_my_info_t *my_info)
 {
 	char *p_pwd, *home;
 	char pwd[PATH_MAX];
@@ -156,11 +155,11 @@ void change_to_home_dir(shell_my_info_t *my_info)
 }
 
 /**
- * change_directory_shell - this function changes current directory
- * @my_info: my_info relevant
- * Return: 1 on success
+ * CURR_CHNG - QWTERTSGDFG
+ * @my_info: FJGHKGHJ
+ * Return: 1 on ASGFHFD
  */
-int change_directory_shell(shell_my_info_t *my_info)
+int CURR_CHNG(shell_my_info_t *my_info)
 {
 	char *dir;
 	int ishome, ishome2, isddash;
@@ -176,23 +175,23 @@ int change_directory_shell(shell_my_info_t *my_info)
 
 	if (dir == NULL || !ishome || !ishome2 || !isddash)
 	{
-		change_to_home_dir(my_info);
+		HOUSE_DIR(my_info);
 		return (1);
 	}
 
 	if (_strcmp("-", dir) == 0)
 	{
-		change_to_ols_dir(my_info);
+		PREV_DIC(my_info);
 		return (1);
 	}
 
 	if (_strcmp(".", dir) == 0 || _strcmp("..", dir) == 0)
 	{
-		change_to_dot_dir(my_info);
+		PAR_DIR(my_info);
 		return (1);
 	}
 
-	change_to_dir(my_info);
+	SOME_DEST(my_info);
 
 	return (1);
 }
