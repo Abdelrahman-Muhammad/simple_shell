@@ -82,7 +82,8 @@ void NEW_IFO(
  * @my_infosh: ZZZZZZZZZZZZZZZ
  */
 void COMIN_GET(
-		separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh)
+		separator_list_t **list_s,
+		command_list_t **list_l, shell_my_info_t *my_infosh)
 {
 	int loop_sep = 1;
 	separator_list_t *ls_s = *list_s;

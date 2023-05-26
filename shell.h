@@ -129,7 +129,8 @@ int DIVIDE_ITOP(shell_my_info_t *my_info, char *input);
 void des(separator_list_t **head_s, command_list_t **head_l,
 		 char *input);
 void COMIN_GET(
-	separator_list_t **list_s, command_list_t **list_l, shell_my_info_t *my_infosh);
+	separator_list_t **list_s, command_list_t **list_l,
+	shell_my_info_t *my_infosh);
 
 char *CHNAG_THEM(char *input, shell_my_info_t *my_info);
 char *ARE_COMING(replacement_variable_t **head, char *input,

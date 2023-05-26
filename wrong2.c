@@ -6,7 +6,7 @@
  * @msg: ZXVZXCVZXCV
  * @ERR: ZXVZXCVZXV
  * @ver_str: ZXCVXZCVXZCV
- * Return: ERR message
+ * Return: -ERR message
  */
 char *ERR_CD(
 		shell_my_info_t *my_info, char *msg, char *ERR, char *ver_str)
@@ -35,7 +35,7 @@ char *ERR_CD(
 
 	OLDONE(ERR, "\n");
 	OLDONE(ERR, "\0");
-	return (ERR);
+	return (-ERR);
 }
 
 /**
@@ -74,7 +74,7 @@ char *ERR_CDD(shell_my_info_t *my_info)
 
 	free(ver_str);
 
-	return (ERR);
+	return (-ERR);
 }
 
 /**
@@ -106,7 +106,7 @@ char *N_T_FONDE(shell_my_info_t *my_info)
 	OLDONE(ERR, ": not found\n");
 	OLDONE(ERR, "\0");
 	free(ver_str);
-	return (ERR);
+	return (-ERR);
 }
 
 /**
@@ -139,5 +139,5 @@ char *EXX_ERR(shell_my_info_t *my_info)
 	OLDONE(ERR, "\n\0");
 	free(ver_str);
 
-	return (ERR);
+	return (-ERR);
 }
